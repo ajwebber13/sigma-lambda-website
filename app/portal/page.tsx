@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Member Portal",
   description:
     "The Sigma Lambda Chapter member portal — dues payment, event RSVPs, check-in and the member directory, coming in Phase 2.",
-};
+  path: "/portal",
+});
 
 export default function PortalPage() {
   return (
@@ -31,7 +33,10 @@ export default function PortalPage() {
                 "Track personal attendance and standing",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3.5 text-[15px] leading-normal">
-                  <span className="mt-0.5 flex h-5.5 w-5.5 flex-shrink-0 items-center justify-center rounded-full bg-gold text-xs font-extrabold text-ink">
+                  <span
+                    aria-hidden="true"
+                    className="mt-0.5 flex h-5.5 w-5.5 flex-shrink-0 items-center justify-center rounded-full bg-gold text-xs font-extrabold text-ink"
+                  >
                     ✓
                   </span>
                   {item}
@@ -54,7 +59,7 @@ export default function PortalPage() {
               <div className="min-h-[360px] rounded-lg bg-ivory p-5.5">
                 <div className="mb-5 flex items-center justify-between">
                   <b className="font-serif text-[15px]">Member Dashboard</b>
-                  <span className="rounded-full bg-gold/14 px-2.5 py-1 text-[11px] font-bold text-gold-deep">
+                  <span className="rounded-full bg-gold px-2.5 py-1 text-[11px] font-bold text-ink">
                     Coming Phase 2
                   </span>
                 </div>

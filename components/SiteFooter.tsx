@@ -68,7 +68,9 @@ export default function SiteFooter() {
           </span>
           <div className="flex gap-3">
             <a
-              href="#"
+              href="https://www.facebook.com/NolaAlphas"
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="Facebook"
               className="flex h-9 w-9 items-center justify-center rounded-full border border-line hover:border-gold"
             >
@@ -80,7 +82,9 @@ export default function SiteFooter() {
               </svg>
             </a>
             <a
-              href="#"
+              href="https://www.instagram.com/neworleansalphas/"
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="Instagram"
               className="flex h-9 w-9 items-center justify-center rounded-full border border-line hover:border-gold"
             >

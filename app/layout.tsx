@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fraunces, Public_Sans } from "next/font/google";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import { siteUrl } from "@/lib/seo";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -16,8 +17,6 @@ const publicSans = Public_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
 });
-
-const siteUrl = "https://www.sigmalambda.org";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

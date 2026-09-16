@@ -5,6 +5,7 @@
   --gold: #c9a227;
   --gold-deep: #8c6d1b;
   --gold-bright: #ebcb6e;
+  --gold-text: #7a5d16;
   --ivory: #f6f2e7;
   --paper: #ece4d2;
   --text-onlight: #1c170f;
@@ -19,6 +20,7 @@
   --color-gold: var(--gold);
   --color-gold-deep: var(--gold-deep);
   --color-gold-bright: var(--gold-bright);
+  --color-gold-text: var(--gold-text);
   --color-ivory: var(--ivory);
   --color-paper: var(--paper);
   --color-line: var(--line);
@@ -58,7 +60,7 @@ h4 {
 }
 
 :focus-visible {
-  outline: 2px solid var(--gold-bright);
+  outline: 2px solid var(--gold-deep);
   outline-offset: 3px;
 }
 

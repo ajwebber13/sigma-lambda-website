@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { navLinks } from "@/lib/content";
 
 export default function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const firstMenuLinkRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     function onScroll() {
@@ -18,10 +20,34 @@ export default function SiteHeader() {
   }, []);
 
   useEffect(() => {
+    const main = document.querySelector("main");
+    const footer = document.querySelector("footer");
     document.body.style.overflow = open ? "hidden" : "";
+    if (open) {
+      main?.setAttribute("inert", "");
+      footer?.setAttribute("inert", "");
+      firstMenuLinkRef.current?.focus();
+    } else {
+      main?.removeAttribute("inert");
+      footer?.removeAttribute("inert");
+    }
     return () => {
       document.body.style.overflow = "";
+      main?.removeAttribute("inert");
+      footer?.removeAttribute("inert");
     };
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        setOpen(false);
+        toggleRef.current?.focus();
+      }
+    }
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
   }, [open]);
 
   return (
@@ -71,6 +97,7 @@ export default function SiteHeader() {
         </nav>
 
         <button
+          ref={toggleRef}
           type="button"
           className="flex h-9.5 w-10.5 items-center justify-center rounded border border-line text-lg text-gold-bright lg:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -78,20 +105,22 @@ export default function SiteHeader() {
           aria-controls="mobile-menu"
           onClick={() => setOpen((v) => !v)}
         >
-          {open ? "✕" : "☰"}
+          <span aria-hidden="true">{open ? "✕" : "☰"}</span>
         </button>
       </div>
 
       <div
         id="mobile-menu"
+        inert={!open}
         className={`fixed inset-0 z-[99] flex flex-col bg-ink px-8 pt-25 pb-10 transition-transform duration-300 lg:hidden ${
           open ? "translate-y-0" : "-translate-y-full"
         }`}
       >
-        {navLinks.map((link) => (
+        {navLinks.map((link, i) => (
           <Link
             key={link.href}
             href={link.href}
+            ref={i === 0 ? firstMenuLinkRef : undefined}
             onClick={() => setOpen(false)}
             className="border-b border-line py-3.5 font-serif text-2xl text-text-ondark"
           >

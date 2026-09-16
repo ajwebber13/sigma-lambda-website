@@ -15,7 +15,7 @@ export default function SectionHeading({
     <div className={`max-w-[640px] ${className}`}>
       <span
         className={`mb-3.5 block text-[13px] font-semibold tracking-[0.03em] ${
-          dark ? "text-gold-bright" : "text-gold-deep"
+          dark ? "text-gold-bright" : "text-gold-text"
         }`}
       >
         {tag}

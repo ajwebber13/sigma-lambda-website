@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
-
-const siteUrl = "https://www.sigmalambda.org";
+import { siteUrl } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = ["", "/about", "/leadership", "/programs", "/events", "/news", "/portal"];

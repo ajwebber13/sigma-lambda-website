@@ -1,10 +1,20 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Medallion from "@/components/Medallion";
 import Reveal from "@/components/Reveal";
 import TiltCard from "@/components/TiltCard";
 import SectionHeading from "@/components/SectionHeading";
+import { buildMetadata } from "@/lib/seo";
 import { legacyTimeline, programs, events, news } from "@/lib/content";
+
+export const metadata: Metadata = buildMetadata({
+  title: "Sigma Lambda Chapter | Alpha Phi Alpha Fraternity, Inc.",
+  description:
+    "Sigma Lambda Chapter of Alpha Phi Alpha Fraternity, Inc. in New Orleans, Louisiana — chapter history, leadership, programs, events and news since 1925.",
+  path: "",
+  absolute: true,
+});
 
 export default function HomePage() {
   return (
@@ -82,7 +92,7 @@ export default function HomePage() {
             </div>
           </Reveal>
           <div className="mt-10">
-            <Link href="/about" className="text-sm font-bold text-gold-deep hover:underline">
+            <Link href="/about" className="text-sm font-bold text-gold-text hover:underline">
               Read the full chapter history →
             </Link>
           </div>
@@ -150,7 +160,7 @@ export default function HomePage() {
                       {event.location} · {event.time}
                     </div>
                   </div>
-                  <div className="ml-auto flex-shrink-0 text-[13px] font-bold whitespace-nowrap text-gold-deep">
+                  <div className="ml-auto flex-shrink-0 text-[13px] font-bold whitespace-nowrap text-gold-text">
                     {event.action} →
                   </div>
                 </div>
@@ -158,7 +168,7 @@ export default function HomePage() {
             </div>
           </Reveal>
           <div className="mt-10">
-            <Link href="/events" className="text-sm font-bold text-gold-deep hover:underline">
+            <Link href="/events" className="text-sm font-bold text-gold-text hover:underline">
               View the full calendar →
             </Link>
           </div>
@@ -179,7 +189,7 @@ export default function HomePage() {
             <div className="grid grid-cols-1 gap-px bg-line sm:grid-cols-3">
               {news.map((item) => (
                 <div key={item.title} className="bg-ivory px-6.5 py-7">
-                  <div className="text-xs font-semibold tracking-[0.05em] text-gold-deep">{item.date}</div>
+                  <div className="text-xs font-semibold tracking-[0.05em] text-gold-text">{item.date}</div>
                   <h3 className="mt-3 text-[17.5px] leading-tight font-semibold">{item.title}</h3>
                   <p className="mt-2.5 text-sm leading-relaxed text-text-onlight/60">{item.excerpt}</p>
                 </div>
@@ -187,7 +197,7 @@ export default function HomePage() {
             </div>
           </Reveal>
           <div className="mt-10">
-            <Link href="/news" className="text-sm font-bold text-gold-deep hover:underline">
+            <Link href="/news" className="text-sm font-bold text-gold-text hover:underline">
               Read all chapter news →
             </Link>
           </div>

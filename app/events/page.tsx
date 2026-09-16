@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
+import { buildMetadata } from "@/lib/seo";
 import { events } from "@/lib/content";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Events & Calendar",
   description:
     "Upcoming events, meetings and service days from Sigma Lambda Chapter, Alpha Phi Alpha Fraternity, Inc. in New Orleans, Louisiana.",
-};
+  path: "/events",
+});
 
 export default function EventsPage() {
   return (
@@ -47,7 +49,7 @@ export default function EventsPage() {
                       {event.location} · {event.time}
                     </div>
                   </div>
-                  <div className="flex-shrink-0 text-sm font-bold whitespace-nowrap text-gold-deep">
+                  <div className="flex-shrink-0 text-sm font-bold whitespace-nowrap text-gold-text">
                     {event.action} →
                   </div>
                 </div>

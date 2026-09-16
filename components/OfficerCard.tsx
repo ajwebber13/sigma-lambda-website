@@ -37,12 +37,12 @@ export default function OfficerCard({ officer }: { officer: Officer }) {
           />
         )}
       </div>
-      <div className="mt-4 text-[12px] font-semibold tracking-[0.06em] text-gold-deep uppercase">
+      <div className="mt-4 text-[12px] font-semibold tracking-[0.06em] text-gold-text uppercase">
         {officer.title}
       </div>
       <h3 className="mt-1 font-serif text-[18px] font-semibold">
         {officer.name}
-        {officer.footnote && <sup className="ml-0.5 text-gold-deep">*</sup>}
+        {officer.footnote && <sup className="ml-0.5 text-gold-text">*</sup>}
       </h3>
     </div>
   );

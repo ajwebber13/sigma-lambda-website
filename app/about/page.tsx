@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import TiltCard from "@/components/TiltCard";
 import SectionHeading from "@/components/SectionHeading";
+import { buildMetadata } from "@/lib/seo";
 import { legacyTimeline } from "@/lib/content";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "About & History",
   description:
     "The history of Sigma Lambda Chapter of Alpha Phi Alpha Fraternity, Inc. — a century of brotherhood and civic leadership in New Orleans, Louisiana.",
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

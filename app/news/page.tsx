@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
+import { buildMetadata } from "@/lib/seo";
 import { news } from "@/lib/content";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "News",
   description:
     "Announcements and updates from Sigma Lambda Chapter, Alpha Phi Alpha Fraternity, Inc. in New Orleans, Louisiana.",
-};
+  path: "/news",
+});
 
 export default function NewsPage() {
   return (
@@ -28,7 +30,7 @@ export default function NewsPage() {
             <div className="grid grid-cols-1 gap-px bg-line sm:grid-cols-3">
               {news.map((item) => (
                 <div key={item.title} className="bg-ivory px-6.5 py-7">
-                  <div className="text-xs font-semibold tracking-[0.05em] text-gold-deep">{item.date}</div>
+                  <div className="text-xs font-semibold tracking-[0.05em] text-gold-text">{item.date}</div>
                   <h2 className="mt-3 text-[17.5px] leading-tight font-semibold">{item.title}</h2>
                   <p className="mt-2.5 text-sm leading-relaxed text-text-onlight/60">{item.excerpt}</p>
                 </div>

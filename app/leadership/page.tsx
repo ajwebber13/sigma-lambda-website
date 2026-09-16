@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import OfficerCard from "@/components/OfficerCard";
+import { buildMetadata } from "@/lib/seo";
 import { officers } from "@/lib/content";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Leadership",
   description:
     "Meet the executive board of Sigma Lambda Chapter, Alpha Phi Alpha Fraternity, Inc. in New Orleans, Louisiana.",
-};
+  path: "/leadership",
+});
 
 export default function LeadershipPage() {
   const hasFootnote = officers.some((o) => o.footnote);

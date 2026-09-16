@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import ProgramsGrid from "@/components/ProgramsGrid";
+import { buildMetadata } from "@/lib/seo";
 import { programs } from "@/lib/content";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Programs",
   description:
     "National and chapter programs run by Sigma Lambda Chapter, Alpha Phi Alpha Fraternity, Inc. — mentoring, civic education and community service in New Orleans.",
-};
+  path: "/programs",
+});
 
 export default function ProgramsPage() {
   return (
