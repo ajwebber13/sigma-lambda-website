@@ -1,16 +1,51 @@
+import fs from "node:fs";
+import path from "node:path";
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 import Reveal from "@/components/Reveal";
+import SignOutButton from "@/components/SignOutButton";
+import DuesCard, { type ExistingDuesPayment } from "@/components/DuesCard";
+import SectionHeading from "@/components/SectionHeading";
+import type { Tier } from "@/lib/dues";
 import { buildMetadata } from "@/lib/seo";
+import { createClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = buildMetadata({
   title: "Member Portal",
   description:
     "The Sigma Lambda Chapter member portal — dues payment, event RSVPs, check-in and the member directory, coming in Phase 2.",
   path: "/portal",
+  noindex: true,
 });
 
-export default function PortalPage() {
+export default async function PortalPage() {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    redirect("/login");
+  }
+
+  const yearStart = new Date(new Date().getFullYear(), 0, 1).toISOString();
+  const { data: duesRows } = await supabase
+    .from("dues_payments")
+    .select("tier, online_total")
+    .eq("user_id", user.id)
+    .eq("method", "stripe")
+    .gte("created_at", yearStart)
+    .order("created_at", { ascending: false })
+    .limit(1);
+
+  const existingPayment: ExistingDuesPayment | null = duesRows?.[0]
+    ? { tier: duesRows[0].tier as Tier, onlineTotal: String(duesRows[0].online_total) }
+    : null;
+
+  const hasZelleQr = fs.existsSync(path.join(process.cwd(), "public/images/zelle-qr.png"));
+
   return (
+    <>
     <section className="bg-ink pt-[150px] pb-24 text-text-ondark">
       <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
         <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-[0.85fr_1.15fr]">
@@ -22,8 +57,8 @@ export default function PortalPage() {
               Everything a brother needs, behind one login.
             </h1>
             <p className="mt-4 max-w-[52ch] text-[16.5px] leading-relaxed text-text-ondark/68">
-              Coming in Phase 2 of the chapter site: individual member login, online dues
-              payment, event RSVPs and a searchable member directory.
+              Online dues payment, event RSVPs and a searchable member directory are coming in
+              Phase 2 — for now, here&apos;s a look at your dashboard.
             </p>
             <ul className="mt-6.5 flex flex-col gap-4">
               {[
@@ -50,6 +85,12 @@ export default function PortalPage() {
               </a>
               .
             </p>
+            <div className="mt-7 flex flex-wrap items-center gap-5">
+              <span className="text-sm text-text-ondark/70">
+                Signed in as <span className="font-semibold text-gold-bright">{user.email}</span>
+              </span>
+              <SignOutButton />
+            </div>
           </Reveal>
           <Reveal>
             <div
@@ -57,10 +98,10 @@ export default function PortalPage() {
               style={{ transform: "perspective(1200px) rotateY(-8deg) rotateX(2deg)" }}
             >
               <div className="min-h-[360px] rounded-lg bg-ivory p-5.5">
-                <div className="mb-5 flex items-center justify-between">
-                  <b className="font-serif text-[15px]">Member Dashboard</b>
-                  <span className="rounded-full bg-gold px-2.5 py-1 text-[11px] font-bold text-ink">
-                    Coming Phase 2
+                <div className="mb-5 flex items-center justify-between gap-3">
+                  <b className="flex-shrink-0 font-serif text-[15px]">Member Dashboard</b>
+                  <span className="max-w-[60%] truncate rounded-full bg-gold px-2.5 py-1 text-[11px] font-bold text-ink">
+                    {user.email}
                   </span>
                 </div>
                 <div className="mb-3 flex gap-3">
@@ -95,5 +136,19 @@ export default function PortalPage() {
         </div>
       </div>
     </section>
+
+    <section className="py-18 lg:py-27">
+      <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
+        <Reveal>
+          <SectionHeading tag="Dues" title="Pay your chapter dues." className="mb-10" />
+        </Reveal>
+        <Reveal>
+          <div className="max-w-[560px]">
+            <DuesCard existingPayment={existingPayment} hasZelleQr={hasZelleQr} />
+          </div>
+        </Reveal>
+      </div>
+    </section>
+    </>
   );
 }

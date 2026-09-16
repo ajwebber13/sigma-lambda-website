@@ -8,11 +8,13 @@ export function buildMetadata({
   description,
   path = "",
   absolute = false,
+  noindex = false,
 }: {
   title: string;
   description: string;
   path?: string;
   absolute?: boolean;
+  noindex?: boolean;
 }): Metadata {
   const url = `${siteUrl}${path}`;
   const ogTitle = absolute ? title : `${title} | ${siteName}`;
@@ -21,6 +23,7 @@ export function buildMetadata({
     title: absolute ? { absolute: title } : title,
     description,
     alternates: { canonical: url },
+    ...(noindex && { robots: { index: false, follow: false } }),
     openGraph: {
       title: ogTitle,
       description,

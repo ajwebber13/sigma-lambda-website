@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
+import RsvpButton from "@/components/RsvpButton";
 import { buildMetadata } from "@/lib/seo";
 import { events } from "@/lib/content";
+import { createClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = buildMetadata({
   title: "Events & Calendar",
@@ -10,7 +12,18 @@ export const metadata: Metadata = buildMetadata({
   path: "/events",
 });
 
-export default function EventsPage() {
+export default async function EventsPage() {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  let rsvpedSlugs = new Set<string>();
+  if (user) {
+    const { data: rsvps } = await supabase.from("event_rsvps").select("event_slug").eq("user_id", user.id);
+    rsvpedSlugs = new Set(rsvps?.map((r) => r.event_slug));
+  }
+
   return (
     <>
       <section className="bg-ink pt-[150px] pb-16 text-text-ondark">
@@ -22,8 +35,8 @@ export default function EventsPage() {
             What&apos;s next for the chapter.
           </h1>
           <p className="mt-6 max-w-[65ch] text-lg leading-relaxed text-text-ondark/78">
-            One running calendar for galas, meetings and service days. Online RSVPs and QR
-            check-in are coming with the members-only portal in Phase 2.
+            One running calendar for galas, meetings and service days. Sign in to RSVP — QR
+            check-in is coming with the members-only portal in a later phase.
           </p>
         </div>
       </section>
@@ -49,9 +62,17 @@ export default function EventsPage() {
                       {event.location} · {event.time}
                     </div>
                   </div>
-                  <div className="flex-shrink-0 text-sm font-bold whitespace-nowrap text-gold-text">
-                    {event.action} →
-                  </div>
+                  {event.action === "RSVP" ? (
+                    <RsvpButton
+                      eventSlug={event.slug}
+                      isSignedIn={Boolean(user)}
+                      initiallyRsvped={rsvpedSlugs.has(event.slug)}
+                    />
+                  ) : (
+                    <div className="flex-shrink-0 text-sm font-bold whitespace-nowrap text-gold-text">
+                      {event.action} →
+                    </div>
+                  )}
                 </div>
               ))}
             </div>

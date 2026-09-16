@@ -158,6 +158,7 @@ export const programs: Program[] = [
 ];
 
 export type EventItem = {
+  slug: string;
   day: string;
   month: string;
   title: string;
@@ -168,6 +169,7 @@ export type EventItem = {
 
 export const events: EventItem[] = [
   {
+    slug: "centennial-scholarship-gala",
     day: "18",
     month: "OCT",
     title: "Centennial Scholarship Gala",
@@ -176,6 +178,7 @@ export const events: EventItem[] = [
     action: "RSVP",
   },
   {
+    slug: "founders-day-service",
     day: "02",
     month: "NOV",
     title: "Founders' Day Service",
@@ -184,6 +187,7 @@ export const events: EventItem[] = [
     action: "RSVP",
   },
   {
+    slug: "monthly-chapter-meeting",
     day: "14",
     month: "NOV",
     title: "Monthly Chapter Meeting",
@@ -192,6 +196,7 @@ export const events: EventItem[] = [
     action: "Add to calendar",
   },
   {
+    slug: "community-service-day",
     day: "21",
     month: "DEC",
     title: "Community Service Day",

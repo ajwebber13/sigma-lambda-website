@@ -5,8 +5,12 @@ import Medallion from "@/components/Medallion";
 import Reveal from "@/components/Reveal";
 import TiltCard from "@/components/TiltCard";
 import SectionHeading from "@/components/SectionHeading";
+import RsvpButton from "@/components/RsvpButton";
+import MerchBuyButton from "@/components/MerchBuyButton";
 import { buildMetadata } from "@/lib/seo";
 import { legacyTimeline, programs, events, news } from "@/lib/content";
+import { merchItems } from "@/lib/merch";
+import { createClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = buildMetadata({
   title: "Sigma Lambda Chapter | Alpha Phi Alpha Fraternity, Inc.",
@@ -16,7 +20,18 @@ export const metadata: Metadata = buildMetadata({
   absolute: true,
 });
 
-export default function HomePage() {
+export default async function HomePage() {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  let rsvpedSlugs = new Set<string>();
+  if (user) {
+    const { data: rsvps } = await supabase.from("event_rsvps").select("event_slug").eq("user_id", user.id);
+    rsvpedSlugs = new Set(rsvps?.map((r) => r.event_slug));
+  }
+
   return (
     <>
       {/* HERO */}
@@ -160,8 +175,18 @@ export default function HomePage() {
                       {event.location} · {event.time}
                     </div>
                   </div>
-                  <div className="ml-auto flex-shrink-0 text-[13px] font-bold whitespace-nowrap text-gold-text">
-                    {event.action} →
+                  <div className="ml-auto flex-shrink-0">
+                    {event.action === "RSVP" ? (
+                      <RsvpButton
+                        eventSlug={event.slug}
+                        isSignedIn={Boolean(user)}
+                        initiallyRsvped={rsvpedSlugs.has(event.slug)}
+                      />
+                    ) : (
+                      <div className="text-[13px] font-bold whitespace-nowrap text-gold-text">
+                        {event.action} →
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
@@ -172,6 +197,33 @@ export default function HomePage() {
               View the full calendar →
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* MERCH / CHAPTER STORE */}
+      <section className="bg-ink py-18 text-text-ondark lg:py-27">
+        <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
+          <Reveal>
+            <SectionHeading
+              tag="Chapter store"
+              title="Wear the letters. Fund the mission."
+              description="A simple built-in store — proceeds support scholarships and chapter programs."
+              dark
+              className="mb-14"
+            />
+          </Reveal>
+          <Reveal>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+              {merchItems.map((item) => (
+                <div key={item.id} className="rounded-lg border border-line/60 bg-[#1c1610] p-6">
+                  <h3 className="text-lg font-semibold">{item.name}</h3>
+                  <div className="mt-4">
+                    <MerchBuyButton itemId={item.id} price={item.price} isSignedIn={Boolean(user)} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 
