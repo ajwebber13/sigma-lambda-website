@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #0a0908;
+  --gold: #c9a227;
+  --gold-deep: #8c6d1b;
+  --gold-bright: #ebcb6e;
+  --ivory: #f6f2e7;
+  --paper: #ece4d2;
+  --text-onlight: #1c170f;
+  --text-ondark: #f3eee1;
+  --line: rgba(201, 162, 39, 0.28);
+  --bg-page: var(--ivory);
+  --text-page: var(--text-onlight);
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+  --color-gold-bright: var(--gold-bright);
+  --color-ivory: var(--ivory);
+  --color-paper: var(--paper);
+  --color-line: var(--line);
+  --color-text-onlight: var(--text-onlight);
+  --color-text-ondark: var(--text-ondark);
+  --font-serif: var(--font-fraunces);
+  --font-sans: var(--font-public-sans);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-page);
+  color: var(--text-page);
+  font-family: var(--font-public-sans), "Segoe UI", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-fraunces), "Iowan Old Style", Georgia, serif;
+  letter-spacing: -0.01em;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold-bright);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 50%;
+  top: -100px;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--ink);
+  padding: 10px 20px;
+  border-radius: 2px;
+  font-weight: 700;
+  font-size: 14px;
+  z-index: 200;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Reveal-on-scroll ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Hero crest (logo float + rim-light glow) ---------- */
+.logo-float {
+  animation: logo-float 5s ease-in-out infinite;
+}
+
+@keyframes logo-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.logo-glow {
+  animation: logo-glow-pulse 5s ease-in-out infinite;
+}
+
+@keyframes logo-glow-pulse {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 6px rgba(201, 162, 39, 0.45)) drop-shadow(0 0 14px rgba(235, 203, 110, 0.35))
+      drop-shadow(0 0 26px rgba(201, 162, 39, 0.25));
+  }
+  50% {
+    filter: drop-shadow(0 0 10px rgba(201, 162, 39, 0.75)) drop-shadow(0 0 22px rgba(235, 203, 110, 0.65))
+      drop-shadow(0 0 42px rgba(201, 162, 39, 0.45));
+  }
+}
+
+/* ---------- Legacy card tilt ---------- */
+.tilt-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.12s ease-out, box-shadow 0.3s ease;
+}
