@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import ProgramsGrid from "@/components/ProgramsGrid";
 import { buildMetadata } from "@/lib/seo";
-import { programs } from "@/lib/content";
+import { programs, programsIntro } from "@/lib/content";
 
 export const metadata: Metadata = buildMetadata({
   title: "Programs",
@@ -17,15 +17,12 @@ export default function ProgramsPage() {
       <section className="bg-ink pt-[150px] pb-16 text-text-ondark">
         <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
           <span className="mb-3.5 block text-[13px] font-semibold tracking-[0.03em] text-gold-bright">
-            Service &amp; programs
+            Service &amp; Programs
           </span>
           <h1 className="max-w-[820px] text-[36px] leading-[1.08] font-semibold sm:text-[52px]">
             Mentoring, education and outreach — organized clearly.
           </h1>
-          <p className="mt-6 max-w-[65ch] text-lg leading-relaxed text-text-ondark/78">
-            National mandates and chapter-built initiatives, sorted so visitors know exactly what
-            Sigma Lambda runs and who it serves.
-          </p>
+          <p className="mt-6 max-w-[65ch] text-lg leading-relaxed text-text-ondark/78">{programsIntro}</p>
         </div>
       </section>
 

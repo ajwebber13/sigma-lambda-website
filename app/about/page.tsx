@@ -1,14 +1,19 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import TiltCard from "@/components/TiltCard";
+import FounderCard from "@/components/FounderCard";
+import InstagramFeed from "@/components/InstagramFeed";
 import SectionHeading from "@/components/SectionHeading";
 import { buildMetadata } from "@/lib/seo";
 import { legacyTimeline } from "@/lib/content";
+import { foundingHistory, founders } from "@/lib/founders";
+import { charterFounders } from "@/lib/charterFounders";
 
 export const metadata: Metadata = buildMetadata({
-  title: "About & History",
+  title: "Alpha Phi Alpha History",
   description:
-    "The history of Sigma Lambda Chapter of Alpha Phi Alpha Fraternity, Inc. — a century of brotherhood and civic leadership in New Orleans, Louisiana.",
+    "The founding history of Alpha Phi Alpha Fraternity, Inc., the Seven Founding Jewels, and the history of Sigma Lambda Chapter in New Orleans, Louisiana.",
   path: "/about",
 });
 
@@ -18,18 +23,71 @@ export default function AboutPage() {
       <section className="bg-ink pt-[150px] pb-16 text-text-ondark">
         <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
           <span className="mb-3.5 block text-[13px] font-semibold tracking-[0.03em] text-gold-bright">
-            About the chapter
+            About the fraternity
           </span>
           <h1 className="max-w-[820px] text-[36px] leading-[1.08] font-semibold sm:text-[52px]">
-            A century of brotherhood, service and leadership in New Orleans.
+            Alpha Phi Alpha History
           </h1>
           <p className="mt-6 max-w-[65ch] text-lg leading-relaxed text-text-ondark/78">
-            Sigma Lambda Chapter of Alpha Phi Alpha Fraternity, Inc. was chartered in 1925,
-            making it one of the oldest chapters of the nation&apos;s first intercollegiate Black
-            fraternity operating in New Orleans. For a hundred years, brothers of Sigma Lambda
-            have led in courtrooms, classrooms and city hall — while building a chapter rooted in
-            scholarship, brotherhood and service to the community.
+            Founded December 4, 1906, at Cornell University — the first intercollegiate
+            Greek-letter fraternity established for African American men.
           </p>
+        </div>
+      </section>
+
+      <section className="bg-paper py-9">
+        <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
+          <Reveal>
+            <Link
+              href="/about/college-chapters"
+              className="flex flex-wrap items-center justify-between gap-4 rounded-lg border border-line bg-ink px-6.5 py-6 text-text-ondark transition-transform hover:-translate-y-0.5"
+            >
+              <span>
+                <span className="block text-[12.5px] font-semibold tracking-[0.06em] text-gold-bright">
+                  Greater New Orleans
+                </span>
+                <span className="mt-1 block text-lg font-semibold">College Chapters</span>
+              </span>
+              <span className="text-sm font-bold text-gold-bright">
+                The area&apos;s six Alpha chapters →
+              </span>
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="bg-paper py-18 lg:py-27">
+        <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
+          <Reveal>
+            <SectionHeading tag="1906" title="The founding of Alpha Phi Alpha." className="mb-10" />
+          </Reveal>
+          <Reveal>
+            <div className="max-w-[75ch] space-y-5 text-[16.5px] leading-relaxed text-text-onlight/78">
+              {foundingHistory.map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="bg-ink py-18 text-text-ondark lg:py-27">
+        <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
+          <Reveal>
+            <SectionHeading
+              tag="The Seven Jewels"
+              title="The Seven Founding Jewels of Alpha Phi Alpha."
+              dark
+              className="mb-14"
+            />
+          </Reveal>
+          <Reveal>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {founders.map((founder) => (
+                <FounderCard key={founder.name} founder={founder} />
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -38,9 +96,25 @@ export default function AboutPage() {
           <Reveal>
             <SectionHeading
               tag="Charter history"
-              title="How the chapter came to be."
+              title="How Sigma Lambda came to be."
               description="The Sigma Lambda Chapter of Alpha Phi Alpha Fraternity was chartered by the Seventeenth Annual Convention of the Fraternity, held in New York City from December 27–31, 1924. On December 5, 1925, the chapter was officially installed in New Orleans, Louisiana, by the Fraternity's Southern Vice President, Brother Charles W. Green — becoming the first Black Greek-letter organization established in the Greater New Orleans area."
+              className="mb-14"
             />
+          </Reveal>
+          <Reveal>
+            <p className="mb-8 max-w-[75ch] text-[16.5px] leading-relaxed text-text-onlight/78">
+              The charter members represented a distinguished group of men, including:
+            </p>
+          </Reveal>
+          <Reveal>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {charterFounders.map((founder) => (
+                <div key={founder.name} className="rounded bg-ink p-5.5 text-text-ondark">
+                  <h3 className="font-serif text-lg font-semibold">{founder.name}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-text-ondark/65">{founder.bio}</p>
+                </div>
+              ))}
+            </div>
           </Reveal>
         </div>
       </section>
@@ -81,6 +155,21 @@ export default function AboutPage() {
       </section>
 
       <section className="bg-paper py-18 lg:py-27">
+        <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
+          <Reveal>
+            <SectionHeading
+              tag="Follow along"
+              title="Sigma Lambda on Instagram."
+              className="mb-10"
+            />
+          </Reveal>
+          <Reveal>
+            <InstagramFeed />
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="py-18 lg:py-27">
         <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
           <Reveal>
             <SectionHeading

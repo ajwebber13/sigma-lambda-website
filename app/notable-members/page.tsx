@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
-import CharterMemberCard from "@/components/CharterMemberCard";
 import SectionHeading from "@/components/SectionHeading";
 import { buildMetadata } from "@/lib/seo";
-import { charterMembers } from "@/lib/charterMembers";
+import { charterMembers, notableMembers } from "@/lib/charterMembers";
 import { pastPresidents } from "@/lib/pastPresidents";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Notable Members",
+  title: "Members",
   description:
-    "The 1925 charter members and past chapter presidents of Sigma Lambda Chapter, Alpha Phi Alpha Fraternity, Inc.",
+    "Charter members, notable members and past chapter presidents of Sigma Lambda Chapter, Alpha Phi Alpha Fraternity, Inc.",
   path: "/notable-members",
 });
 
@@ -19,10 +18,10 @@ export default function NotableMembersPage() {
       <section className="bg-ink pt-[150px] pb-16 text-text-ondark">
         <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
           <span className="mb-3.5 block text-[13px] font-semibold tracking-[0.03em] text-gold-bright">
-            Notable members
+            Members
           </span>
           <h1 className="max-w-[820px] text-[36px] leading-[1.08] font-semibold sm:text-[52px]">
-            The men who founded this chapter, and led it since.
+            Charter members, notable members and past presidents.
           </h1>
         </div>
       </section>
@@ -30,14 +29,16 @@ export default function NotableMembersPage() {
       <section className="py-18 lg:py-27">
         <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
           <Reveal>
-            <SectionHeading tag="Charter members" title="Chartered in 1925." className="mb-14" />
+            <SectionHeading tag="Chartered in 1925" title="Charter Members" className="mb-10" />
           </Reveal>
           <Reveal>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {charterMembers.map((member) => (
-                <CharterMemberCard key={member.slug} member={member} />
+            <ul className="columns-2 gap-x-10 sm:columns-3 lg:columns-4">
+              {charterMembers.map((name) => (
+                <li key={name} className="mb-2.5 break-inside-avoid text-[15px] text-text-onlight/75">
+                  {name}
+                </li>
               ))}
-            </div>
+            </ul>
           </Reveal>
         </div>
       </section>
@@ -45,7 +46,25 @@ export default function NotableMembersPage() {
       <section className="bg-paper py-18 lg:py-27">
         <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
           <Reveal>
-            <SectionHeading tag="Past chapter presidents" title="A century of leadership." className="mb-10" />
+            <SectionHeading tag="Brothers of the chapter" title="Notable Members" className="mb-14" />
+          </Reveal>
+          <Reveal>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {notableMembers.map((member) => (
+                <div key={member.name} className="rounded bg-ink p-5.5 text-text-ondark">
+                  <h3 className="font-serif text-lg font-semibold">{member.name}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-text-ondark/65">{member.role}</p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="py-18 lg:py-27">
+        <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
+          <Reveal>
+            <SectionHeading tag="Past Chapter Presidents" title="A Century of Leadership" className="mb-10" />
           </Reveal>
           <Reveal>
             <ul className="columns-2 gap-x-10 sm:columns-3 lg:columns-4">
@@ -56,6 +75,10 @@ export default function NotableMembersPage() {
               ))}
             </ul>
           </Reveal>
+          <div className="mt-8 space-y-1 text-[13px] text-text-onlight/55">
+            <p>* 23rd General President of Alpha Phi Alpha</p>
+            <p>** 27th General President of Alpha Phi Alpha Fraternity, Inc.</p>
+          </div>
         </div>
       </section>
     </>

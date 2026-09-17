@@ -67,7 +67,7 @@ export default function SiteHeader() {
           <span className="leading-tight">
             <b className="block text-base font-semibold">SIGMA LAMBDA CHAPTER</b>
             <span className="mt-0.5 block font-sans text-[11px] tracking-[0.08em] text-gold-bright">
-              ALPHA PHI ALPHA
+              ALPHA PHI ALPHA FRATERNITY, INC.
             </span>
           </span>
         </Link>

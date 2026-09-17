@@ -16,27 +16,30 @@ export const legacyTimeline: LegacyEntry[] = [
   {
     year: "1925",
     initials: "AT",
-    name: "A.P. Tureaud",
+    name: "Alexander Pierre Tureaud Sr.",
     description:
-      "Civil rights attorney who argued for equal education in Louisiana courts for over three decades.",
+      "Alexander Pierre Tureaud Sr. was an American civil rights attorney and NAACP leader who spearheaded legal challenges to segregation in Louisiana. A Howard Law graduate and associate of Thurgood Marshall, he won landmark cases ending Jim Crow in New Orleans schools, securing equal pay for Black teachers, integrating LSU, and defending early sit-in protests at the U.S. Supreme Court.",
   },
   {
     year: "1946",
     initials: "DM",
     name: 'Ernest "Dutch" Morial',
-    description: "First Black mayor of New Orleans, and the first Black graduate of LSU Law School.",
+    description:
+      "First Black mayor of New Orleans, and the first Black graduate of LSU Law School. Morial was elected the 23rd General President of Alpha Phi Alpha Fraternity, Inc.",
   },
   {
     year: "1962",
     initials: "EB",
     name: "Emmett Bashful",
-    description: "Educator and administrator who helped shape higher education access across the city.",
+    description:
+      "Educator and administrator who helped shape higher education access across the city. First chancellor of Southern University of New Orleans.",
   },
   {
     year: "1974",
     initials: "CT",
     name: "Charles Teamer, Sr.",
-    description: "Chancellor and civic leader whose work strengthened Black colleges in New Orleans.",
+    description:
+      "Chancellor and civic leader whose work strengthened Black colleges in New Orleans. Teamer was elected the 27th General President of Alpha Phi Alpha Fraternity, Inc.",
   },
 ];
 
@@ -118,69 +121,56 @@ export const officers: Officer[] = [
 ];
 
 export type Program = {
-  number: string;
   name: string;
   description: string;
   category: "national" | "chapter";
-  contact?: { name: string; email: string };
 };
+
+export const programsIntro =
+  "The fraternity's national programs are community outreach mentoring initiatives that have been adopted by the organization's governing body and mandated for implementation by all of its chapters.";
 
 export const programs: Program[] = [
   {
-    number: "01",
     name: "Brother's Keeper",
     description:
       "Formally the A. Charles Haston Brother's Keeper program, developed to advocate for and improve quality of life for Alpha Phi Alpha brothers, their spouses, and widows who are retired, elderly, disabled, or ailing.",
     category: "national",
-    contact: { name: "Gary Briggs", email: "apaslscholarshipfoundation@gmail.com" },
   },
   {
-    number: "02",
     name: "A Voteless People Is a Hopeless People",
     description:
       "Initiated as a national program in the 1930s, when many African Americans had the legal right to vote but were blocked by poll taxes, threats, and lack of education about the voting process. Voter education and registration have remained a focus for over 65 years, expanding in the 1990s to include political awareness delivered through town halls and candidate forums.",
     category: "national",
-    contact: { name: "Gary Briggs", email: "apaslscholarshipfoundation@gmail.com" },
   },
   {
-    number: "03",
     name: "Go-to-High-School, Go-to-College",
     description:
       "Established in 1922, this program concentrates on completing secondary and collegiate education as a path to advancement.",
     category: "national",
-    contact: { name: "Gary Briggs", email: "apaslscholarshipfoundation@gmail.com" },
   },
   {
-    number: "04",
     name: "Project Alpha",
     description:
       "A collaborative program providing education, motivation, and skill-building on responsibility, relationships, and teen pregnancy prevention for young men ages 12-15, delivered through workshops led by chapter brothers.",
     category: "national",
-    contact: { name: "Gary Briggs", email: "apaslscholarshipfoundation@gmail.com" },
   },
   {
-    number: "05",
     name: "Alpha Youth Leadership Academy",
     description:
       "Works to give young men in Greater New Orleans a brighter, more positive outlook on life, guided by the brothers of Sigma Lambda. Currently partners with Warren Easton Charter School to mentor a core group of high school young men. Brothers mentor one Thursday each month and host weekend enrichment activities year-round. Participants qualify for priority consideration for Alpha Phi Alpha Scholarship Foundation awards.",
     category: "chapter",
-    contact: { name: "Howard L. Rodgers IV", email: "apaslscholarshipfoundation@gmail.com" },
   },
   {
-    number: "06",
     name: "Scholarship Foundation",
     description:
       "A 501(c)(3) organization that raises and distributes scholarship funds, primarily to young men furthering their education. Each year, the foundation and chapter host a scholarship gala during Founders' Week as the marquee fundraising event.",
     category: "chapter",
-    contact: { name: "Howard L. Rodgers IV", email: "apaslscholarshipfoundation@gmail.com" },
   },
   {
-    number: "07",
     name: "Social Justice",
     description:
       "Focuses on race and equality, voter rights, and mass incarceration. Brothers have led voter mobilization efforts and public forums on advocacy and civic action in New Orleans.",
     category: "chapter",
-    contact: { name: "Howard L. Rodgers IV", email: "apaslscholarshipfoundation@gmail.com" },
   },
 ];
 

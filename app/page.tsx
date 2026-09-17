@@ -8,7 +8,7 @@ import SectionHeading from "@/components/SectionHeading";
 import RsvpButton from "@/components/RsvpButton";
 import MerchBuyButton from "@/components/MerchBuyButton";
 import { buildMetadata } from "@/lib/seo";
-import { legacyTimeline, programs, events, news } from "@/lib/content";
+import { legacyTimeline, programs, programsIntro, events, news } from "@/lib/content";
 import { merchItems } from "@/lib/merch";
 import { createClient } from "@/lib/supabase/server";
 
@@ -51,7 +51,7 @@ export default async function HomePage() {
               <span className="h-1.5 w-1.5 rounded-full bg-gold shadow-[0_0_10px_2px_rgba(201,162,39,0.7)]" />
               FOUNDED 1925 · NEW ORLEANS, LOUISIANA
             </div>
-            <h1 className="text-[38px] leading-[1.03] font-semibold sm:text-[52px] lg:text-[68px]">
+            <h1 className="text-[44px] leading-[1.0] font-semibold sm:text-[64px] lg:text-[84px]">
               A Century of Brotherhood
             </h1>
             <div className="mt-9 flex flex-wrap justify-center gap-4 lg:justify-start">
@@ -119,9 +119,9 @@ export default async function HomePage() {
         <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
           <Reveal>
             <SectionHeading
-              tag="Service &amp; programs"
+              tag="Service &amp; Programs"
               title="Mentoring, education and outreach — organized clearly."
-              description="National mandates and chapter-built initiatives, sorted so visitors know exactly what Sigma Lambda runs and who it serves."
+              description={programsIntro}
               dark
               className="mb-14"
             />
@@ -130,8 +130,7 @@ export default async function HomePage() {
             <div className="grid grid-cols-1 gap-px bg-text-ondark/12 sm:grid-cols-2 lg:grid-cols-3">
               {programs.slice(0, 3).map((program) => (
                 <div key={program.name} className="bg-ink px-6.5 py-7.5 transition-colors hover:bg-[#1c1610]">
-                  <span className="font-serif text-2xl font-semibold text-gold-deep">{program.number}</span>
-                  <h3 className="mt-3.5 text-lg font-semibold">{program.name}</h3>
+                  <h3 className="text-lg font-semibold">{program.name}</h3>
                   <p className="mt-2.5 text-sm leading-relaxed text-text-ondark/60">{program.description}</p>
                 </div>
               ))}

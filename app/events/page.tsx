@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import RsvpButton from "@/components/RsvpButton";
 import SectionHeading from "@/components/SectionHeading";
@@ -39,6 +40,45 @@ export default async function EventsPage() {
             Browse the chapter&apos;s full calendar below, or sign in to RSVP to the events we&apos;re
             tracking here — QR check-in is coming with the members-only portal in a later phase.
           </p>
+        </div>
+      </section>
+
+      <section className="bg-paper py-14">
+        <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
+          <Reveal>
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
+              <Link
+                href="/events/founders-day"
+                className="rounded-lg border border-line bg-ink px-6.5 py-7 text-text-ondark transition-transform hover:-translate-y-0.5"
+              >
+                <span className="text-[12.5px] font-semibold tracking-[0.06em] text-gold-bright">
+                  Dec 4, 2026
+                </span>
+                <h2 className="mt-2.5 text-lg font-semibold">Founder&apos;s Day</h2>
+                <p className="mt-1.5 text-sm text-text-ondark/60">120 Years of Brotherhood →</p>
+              </Link>
+              <Link
+                href="/events/scholarship-gala"
+                className="rounded-lg border border-line bg-ink px-6.5 py-7 text-text-ondark transition-transform hover:-translate-y-0.5"
+              >
+                <span className="text-[12.5px] font-semibold tracking-[0.06em] text-gold-bright">
+                  Founders&apos; Week
+                </span>
+                <h2 className="mt-2.5 text-lg font-semibold">Scholarship Gala</h2>
+                <p className="mt-1.5 text-sm text-text-ondark/60">The chapter&apos;s marquee fundraiser →</p>
+              </Link>
+              <Link
+                href="/events/gallery"
+                className="rounded-lg border border-line bg-ink px-6.5 py-7 text-text-ondark transition-transform hover:-translate-y-0.5"
+              >
+                <span className="text-[12.5px] font-semibold tracking-[0.06em] text-gold-bright">
+                  Photos
+                </span>
+                <h2 className="mt-2.5 text-lg font-semibold">Gallery</h2>
+                <p className="mt-1.5 text-sm text-text-ondark/60">Browse photos by event →</p>
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
 

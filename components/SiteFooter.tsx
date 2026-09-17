@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { chapter } from "@/lib/content";
 
@@ -6,21 +7,17 @@ export default function SiteFooter() {
     <footer className="bg-ink pt-16 pb-8 text-text-ondark/70">
       <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
         <div className="flex flex-wrap justify-between gap-10 border-b border-line pb-12">
-          <div className="flex items-center gap-3 font-serif text-text-ondark">
-            <span
-              className="flex h-9.5 w-9.5 flex-shrink-0 items-center justify-center rounded-full text-sm font-bold text-ink"
-              style={{
-                background:
-                  "radial-gradient(circle at 32% 28%, var(--gold-bright), var(--gold) 46%, var(--gold-deep) 100%)",
-              }}
-            >
-              ΑΦΑ
+          <Link href="/" className="flex items-center gap-3 font-serif text-text-ondark">
+            <span className="relative h-9.5 w-9.5 flex-shrink-0">
+              <Image src="/images/sigma-lambda-logo.png" alt="" fill sizes="38px" className="object-contain" />
             </span>
             <span className="leading-tight">
-              <b className="block text-base font-semibold">{chapter.name}</b>
-              <span className="mt-0.5 block font-sans text-[13px] text-text-ondark/70">{chapter.org}</span>
+              <b className="block text-base font-semibold">SIGMA LAMBDA CHAPTER</b>
+              <span className="mt-0.5 block font-sans text-[11px] tracking-[0.08em] text-gold-bright">
+                ALPHA PHI ALPHA FRATERNITY, INC.
+              </span>
             </span>
-          </div>
+          </Link>
 
           <div className="flex flex-wrap gap-14">
             <div>

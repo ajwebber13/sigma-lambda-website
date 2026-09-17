@@ -1,6 +1,11 @@
 // "Bobby Pierce" appears twice, consecutively, in the source data. This may
 // reflect two separate (non-consecutive) terms rather than a transcription
 // error on this end — flagged here for chapter confirmation before publish.
+export const pastPresidentsFootnote = {
+  morial: "23rd General President of Alpha Phi Alpha Fraternity, Inc.",
+  teamer: "27th General President of Alpha Phi Alpha Fraternity, Inc.",
+};
+
 export const pastPresidents: string[] = [
   "Jessie O. Richards",
   "William H. Mitchell",
@@ -19,13 +24,13 @@ export const pastPresidents: string[] = [
   "Willard Dumas",
   "Marcus Neustadter Jr.",
   "Anthony M. Rachal Jr.",
-  "Ernest N. Morial",
+  "Ernest N. Morial *",
   "Maurice Prevost",
   "Emmett W. Bashful",
   "William R. Adams",
   "Walter King",
-  "Charles L. deLay",
-  "Charles C. Teamer Sr.",
+  "Charles L. DeLay",
+  "Charles C. Teamer Sr. **",
   "Rudolph Deteige",
   "Ellis Smith",
   "Gerald V. Williams",
@@ -50,7 +55,7 @@ export const pastPresidents: string[] = [
   "Tyronne Walker",
   "Jonathan Stewart",
   "Percy Manson",
-  "Howard Rodgers IV",
-  "Robert Carter III",
+  "Howard Rodgers, IV",
+  "Robert Carter, III",
   "Brian Turner",
 ];
