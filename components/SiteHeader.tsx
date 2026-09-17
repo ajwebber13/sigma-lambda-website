@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { navLinks } from "@/lib/content";
@@ -60,14 +61,8 @@ export default function SiteHeader() {
     >
       <div className="mx-auto flex max-w-[1180px] items-center justify-between gap-6 px-5 sm:px-8">
         <Link href="/" className="flex items-center gap-3 font-serif text-text-ondark">
-          <span
-            className="flex h-9.5 w-9.5 flex-shrink-0 items-center justify-center rounded-full text-sm font-bold text-ink shadow-[0_0_0_1px_rgba(201,162,39,0.5),0_6px_18px_-6px_rgba(201,162,39,0.6)]"
-            style={{
-              background:
-                "radial-gradient(circle at 32% 28%, var(--gold-bright), var(--gold) 46%, var(--gold-deep) 100%)",
-            }}
-          >
-            ΑΦΑ
+          <span className="relative h-9.5 w-9.5 flex-shrink-0">
+            <Image src="/images/sigma-lambda-logo.png" alt="" fill sizes="38px" className="object-contain" />
           </span>
           <span className="leading-tight">
             <b className="block text-base font-semibold">SIGMA LAMBDA CHAPTER</b>

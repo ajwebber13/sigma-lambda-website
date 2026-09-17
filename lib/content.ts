@@ -128,24 +128,38 @@ export type Program = {
 export const programs: Program[] = [
   {
     number: "01",
-    name: "Go-to-High-School, Go-to-College",
-    description: "Academic mentoring that has guided students toward higher education for generations.",
+    name: "Brother's Keeper",
+    description:
+      "Formally the A. Charles Haston Brother's Keeper program, developed to advocate for and improve quality of life for Alpha Phi Alpha brothers, their spouses, and widows who are retired, elderly, disabled, or ailing.",
     category: "national",
+    contact: { name: "Gary Briggs", email: "apaslscholarshipfoundation@gmail.com" },
   },
   {
     number: "02",
     name: "A Voteless People Is a Hopeless People",
-    description: "Voter registration and civic education rooted in the fraternity's founding mission.",
+    description:
+      "Initiated as a national program in the 1930s, when many African Americans had the legal right to vote but were blocked by poll taxes, threats, and lack of education about the voting process. Voter education and registration have remained a focus for over 65 years, expanding in the 1990s to include political awareness delivered through town halls and candidate forums.",
     category: "national",
+    contact: { name: "Gary Briggs", email: "apaslscholarshipfoundation@gmail.com" },
   },
   {
     number: "03",
-    name: "Project Alpha",
-    description: "Health education and mentorship built for young men in the New Orleans community.",
+    name: "Go-to-High-School, Go-to-College",
+    description:
+      "Established in 1922, this program concentrates on completing secondary and collegiate education as a path to advancement.",
     category: "national",
+    contact: { name: "Gary Briggs", email: "apaslscholarshipfoundation@gmail.com" },
   },
   {
     number: "04",
+    name: "Project Alpha",
+    description:
+      "A collaborative program providing education, motivation, and skill-building on responsibility, relationships, and teen pregnancy prevention for young men ages 12-15, delivered through workshops led by chapter brothers.",
+    category: "national",
+    contact: { name: "Gary Briggs", email: "apaslscholarshipfoundation@gmail.com" },
+  },
+  {
+    number: "05",
     name: "Alpha Youth Leadership Academy",
     description:
       "Works to give young men in Greater New Orleans a brighter, more positive outlook on life, guided by the brothers of Sigma Lambda. Currently partners with Warren Easton Charter School to mentor a core group of high school young men. Brothers mentor one Thursday each month and host weekend enrichment activities year-round. Participants qualify for priority consideration for Alpha Phi Alpha Scholarship Foundation awards.",
@@ -153,7 +167,7 @@ export const programs: Program[] = [
     contact: { name: "Howard L. Rodgers IV", email: "apaslscholarshipfoundation@gmail.com" },
   },
   {
-    number: "05",
+    number: "06",
     name: "Scholarship Foundation",
     description:
       "A 501(c)(3) organization that raises and distributes scholarship funds, primarily to young men furthering their education. Each year, the foundation and chapter host a scholarship gala during Founders' Week as the marquee fundraising event.",
@@ -161,7 +175,7 @@ export const programs: Program[] = [
     contact: { name: "Howard L. Rodgers IV", email: "apaslscholarshipfoundation@gmail.com" },
   },
   {
-    number: "06",
+    number: "07",
     name: "Social Justice",
     description:
       "Focuses on race and equality, voter rights, and mass incarceration. Brothers have led voter mobilization efforts and public forums on advocacy and civic action in New Orleans.",
@@ -220,26 +234,24 @@ export const events: EventItem[] = [
 ];
 
 export type NewsItem = {
-  date: string;
+  date?: string;
+  byline?: string;
   title: string;
   excerpt: string;
 };
 
 export const news: NewsItem[] = [
   {
-    date: "SEPT 2026",
-    title: "Centennial Scholarship Gala tickets now open",
-    excerpt: "Join the chapter in celebrating 100 years of service in New Orleans.",
+    date: "June 24, 2017",
+    title: "New Orleans Alphas Award $6K in Scholarships",
+    excerpt:
+      "The chapter awarded $6,000 total to three young men at its 2017 Scholarship Breakfast at Dillard University: Seantrell Lemar (Dr. Norman C. Francis Outstanding Scholar, $3,000), Joshua Williams (Dr. Emmett W. Bashful Outstanding Scholar, $2,000), and Jacob Detiege (Dr. Rudolph J. Detiege Outstanding Scholar, $1,000). Over the previous 20 years, the chapter had awarded more than $25,000 in scholarships.",
   },
   {
-    date: "AUG 2026",
-    title: "Fall mentoring cohort begins next month",
-    excerpt: "Go-to-High-School, Go-to-College kicks off its newest group of scholars.",
-  },
-  {
-    date: "JUL 2026",
-    title: "Chapter directory update now live",
-    excerpt: "Members can now update their own contact info from the portal.",
+    byline: "By Brother Joseph Washington, Jr.",
+    title: "Sigma Lambda Chapter Impacts Young Men Through Scholarship",
+    excerpt:
+      "Profiles three scholarship recipients — Dylan Mitchell, Andre Wilson and Blake Woods — and the chapter's annual Scholarship Gala held during Founders Week.",
   },
 ];
 
