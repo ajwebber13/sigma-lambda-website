@@ -33,6 +33,18 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <section className="bg-paper py-18 lg:py-27">
+        <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
+          <Reveal>
+            <SectionHeading
+              tag="Charter history"
+              title="How the chapter came to be."
+              description="The Sigma Lambda Chapter of Alpha Phi Alpha Fraternity was chartered by the Seventeenth Annual Convention of the Fraternity, held in New York City from December 27–31, 1924. On December 5, 1925, the chapter was officially installed in New Orleans, Louisiana, by the Fraternity's Southern Vice President, Brother Charles W. Green — becoming the first Black Greek-letter organization established in the Greater New Orleans area."
+            />
+          </Reveal>
+        </div>
+      </section>
+
       <section className="py-18 lg:py-27">
         <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
           <Reveal>

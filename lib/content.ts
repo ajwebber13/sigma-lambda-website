@@ -122,6 +122,7 @@ export type Program = {
   name: string;
   description: string;
   category: "national" | "chapter";
+  contact?: { name: string; email: string };
 };
 
 export const programs: Program[] = [
@@ -145,15 +146,27 @@ export const programs: Program[] = [
   },
   {
     number: "04",
-    name: "7th Ward Community Service",
-    description: "Chapter-organized service days supporting neighbors across New Orleans.",
+    name: "Alpha Youth Leadership Academy",
+    description:
+      "Works to give young men in Greater New Orleans a brighter, more positive outlook on life, guided by the brothers of Sigma Lambda. Currently partners with Warren Easton Charter School to mentor a core group of high school young men. Brothers mentor one Thursday each month and host weekend enrichment activities year-round. Participants qualify for priority consideration for Alpha Phi Alpha Scholarship Foundation awards.",
     category: "chapter",
+    contact: { name: "Howard L. Rodgers IV", email: "apaslscholarshipfoundation@gmail.com" },
   },
   {
     number: "05",
-    name: "Centennial Scholarship Fund",
-    description: "Chapter-run scholarships awarded to local students pursuing higher education.",
+    name: "Scholarship Foundation",
+    description:
+      "A 501(c)(3) organization that raises and distributes scholarship funds, primarily to young men furthering their education. Each year, the foundation and chapter host a scholarship gala during Founders' Week as the marquee fundraising event.",
     category: "chapter",
+    contact: { name: "Howard L. Rodgers IV", email: "apaslscholarshipfoundation@gmail.com" },
+  },
+  {
+    number: "06",
+    name: "Social Justice",
+    description:
+      "Focuses on race and equality, voter rights, and mass incarceration. Brothers have led voter mobilization efforts and public forums on advocacy and civic action in New Orleans.",
+    category: "chapter",
+    contact: { name: "Howard L. Rodgers IV", email: "apaslscholarshipfoundation@gmail.com" },
   },
 ];
 
@@ -233,6 +246,7 @@ export const news: NewsItem[] = [
 export const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
+  { href: "/notable-members", label: "Notable Members" },
   { href: "/leadership", label: "Leadership" },
   { href: "/programs", label: "Programs" },
   { href: "/events", label: "Events" },

@@ -145,6 +145,44 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* COMMUNITY IMPACT */}
+      <section className="bg-paper py-18 lg:py-27">
+        <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
+          <Reveal>
+            <SectionHeading
+              tag="Community impact"
+              title="Community Impact."
+              className="mb-14"
+            />
+          </Reveal>
+          <Reveal>
+            <div className="grid grid-cols-1 gap-5.5 sm:grid-cols-3">
+              <div className="rounded bg-ink px-6.5 py-8 text-text-ondark">
+                <b className="block font-serif text-4xl font-semibold text-gold-bright">300+</b>
+                <p className="mt-3 text-sm leading-relaxed text-text-ondark/65">
+                  Tickets sold at the 2016 Scholarship Gala at Xavier University.
+                </p>
+              </div>
+              <div className="rounded bg-ink px-6.5 py-8 text-text-ondark">
+                <p className="text-[15.5px] leading-relaxed text-text-ondark/80">
+                  The chapter&apos;s Scholarship Foundation has awarded thousands of dollars in
+                  scholarships to young men in the New Orleans community.
+                </p>
+              </div>
+              <div className="rounded bg-ink px-6.5 py-8 text-text-ondark">
+                <p className="text-[15.5px] leading-relaxed text-text-ondark/80">
+                  The chapter&apos;s Alpha Voter mobilization phone bank reached thousands of Black
+                  men across New Orleans and Baton Rouge ahead of the 2016 election.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+          <p className="mt-8 text-[13px] text-text-onlight/50">
+            Figures reflect available chapter records — contact the chapter for current totals.
+          </p>
+        </div>
+      </section>
+
       {/* EVENTS TEASER */}
       <section className="py-18 lg:py-27">
         <div className="mx-auto max-w-[1180px] px-5 sm:px-8">

@@ -35,6 +35,14 @@ export default function ProgramsGrid({ programs }: { programs: Program[] }) {
             <span className="font-serif text-2xl font-semibold text-gold-deep">{program.number}</span>
             <h2 className="mt-3.5 text-lg font-semibold">{program.name}</h2>
             <p className="mt-2.5 text-sm leading-relaxed text-text-ondark/60">{program.description}</p>
+            {program.contact && (
+              <p className="mt-3.5 text-[13px] text-text-ondark/50">
+                Contact: {program.contact.name} —{" "}
+                <a href={`mailto:${program.contact.email}`} className="text-gold-bright hover:underline">
+                  {program.contact.email}
+                </a>
+              </p>
+            )}
           </div>
         ))}
       </div>

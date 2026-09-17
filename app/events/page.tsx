@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import RsvpButton from "@/components/RsvpButton";
+import SectionHeading from "@/components/SectionHeading";
 import { buildMetadata } from "@/lib/seo";
 import { events } from "@/lib/content";
 import { createClient } from "@/lib/supabase/server";
@@ -35,14 +36,46 @@ export default async function EventsPage() {
             What&apos;s next for the chapter.
           </h1>
           <p className="mt-6 max-w-[65ch] text-lg leading-relaxed text-text-ondark/78">
-            One running calendar for galas, meetings and service days. Sign in to RSVP — QR
-            check-in is coming with the members-only portal in a later phase.
+            Browse the chapter&apos;s full calendar below, or sign in to RSVP to the events we&apos;re
+            tracking here — QR check-in is coming with the members-only portal in a later phase.
           </p>
         </div>
       </section>
 
       <section className="py-18 lg:py-27">
         <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
+          <Reveal>
+            <SectionHeading
+              tag="Full chapter calendar"
+              title="Everything on the calendar."
+              className="mb-10"
+            />
+          </Reveal>
+          <Reveal>
+            <div className="overflow-hidden rounded-lg border border-line">
+              <iframe
+                src="https://calendar.google.com/calendar/embed?src=neworleansalphas%40gmail.com&ctz=America/Chicago"
+                style={{ border: 0 }}
+                width="100%"
+                height="650"
+                title="Sigma Lambda Chapter full calendar"
+                loading="lazy"
+              />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="bg-paper py-18 lg:py-27">
+        <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
+          <Reveal>
+            <SectionHeading
+              tag="RSVP"
+              title="Events you can RSVP to."
+              description="The specific events the chapter portal tracks attendance for."
+              className="mb-10"
+            />
+          </Reveal>
           <Reveal>
             <div className="mx-auto max-w-[760px]">
               {events.map((event, i) => (
