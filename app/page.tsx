@@ -37,12 +37,12 @@ export default async function HomePage() {
       {/* HERO */}
       <section className="relative flex min-h-screen items-center overflow-hidden pt-[150px] pb-24 text-text-ondark">
         <Image
-          src="/images/city-of-neworleans.jpg"
+          src="/images/brotherhood.jpg"
           alt=""
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center"
+          className="object-cover object-[center_35%]"
         />
         <div className="absolute inset-0 bg-[rgba(10,9,8,0.72)]" aria-hidden="true" />
         <div className="relative z-10 mx-auto grid max-w-[1180px] grid-cols-1 items-center gap-10 px-5 sm:px-8 lg:grid-cols-[1.15fr_0.85fr]">

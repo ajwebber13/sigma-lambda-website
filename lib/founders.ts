@@ -2,7 +2,8 @@ export type Founder = {
   name: string;
   years: string;
   photo: string;
-  bio: string;
+  cardBio: string;
+  bioParagraphs: string[];
 };
 
 export const foundingHistory = [
@@ -17,42 +18,77 @@ export const founders: Founder[] = [
     name: "Henry Arthur Callis",
     years: "1887–1974",
     photo: "callis.jpg",
-    bio: "Callis became a practicing physician, Howard University Professor of Medicine, and prolific contributor to medical journals. Often regarded as the \"philosopher of the founders\" and a moving force in the Fraternity's development, he was the only one of the \"Cornell Seven\" to become general president. Prior to moving to Washington, D.C., he was a medical consultant to the Veterans Hospital in Tuskegee, Alabama. Upon his death in 1974, at age 87, the fraternity entered a time without any living Jewels. His papers were donated to Howard's Moorland-Spingarn Research Center.",
+    cardBio: "Callis became a practicing physician, Howard University Professor of Medicine, and prolific contributor to medical journals.",
+    bioParagraphs: [
+      "Callis became a practicing physician, Howard University Professor of Medicine, and prolific contributor to medical journals.",
+      "Often regarded as the \"philosopher of the founders\" and a moving force in the Fraternity's development, he was the only one of the \"Cornell Seven\" to become general president. Prior to moving to Washington, D.C., he was a medical consultant to the Veterans Hospital in Tuskegee, Alabama.",
+      "Upon his death in 1974, at age 87, the fraternity entered a time without any living Jewels. His papers were donated to Howard's Moorland-Spingarn Research Center.",
+    ],
   },
   {
     name: "Charles Henry Chapman",
     years: "1870–1934",
     photo: "chapman.jpg",
-    bio: "Chapman entered higher education and eventually became Professor of Agriculture at what is now Florida A&M University. A university funeral was held with considerable fraternity participation when he became the first Jewel to enter Omega Chapter in 1934. Described as \"a brother beloved in the bonds,\" Chapman was a founder of FAMU's Beta Nu Chapter. During the organization stages of Alpha Chapter, he was the first chairman of the Committees on Initiation and Organization.",
+    cardBio: "Chapman entered higher education and eventually became Professor of Agriculture at what is now Florida A&M University.",
+    bioParagraphs: [
+      "Chapman entered higher education and eventually became Professor of Agriculture at what is now Florida A&M University.",
+      "A university funeral was held with considerable fraternity participation when he became the first Jewel to enter Omega Chapter in 1934. Described as \"a brother beloved in the bonds,\" Chapman was a founder of FAMU's Beta Nu Chapter.",
+      "During the organization stages of Alpha Chapter, he was the first chairman of the Committees on Initiation and Organization.",
+    ],
   },
   {
     name: "Eugene Kinckle Jones",
     years: "1885–1954",
     photo: "jones.jpg",
-    bio: "Jones became the first executive secretary of the National Urban League. His 20-year tenure with the Urban League has exceeded those of all his successors in office. A versatile leader, he organized the first three fraternity chapters that branched out from Cornell — Beta at Howard, Gamma at Virginia Union University, and the original Delta at the University of Toronto in Canada. In addition to becoming Alpha Chapter's second president and joining with Callis in creating the fraternity name, Jones was a member of the first Committees on Constitution and Organization and helped write the fraternity ritual. Jones also has the distinction of being one of the first initiates as well as an original founder. His status as a founder was not finally established until 1952.",
+    cardBio: "Jones became the first executive secretary of the National Urban League.",
+    bioParagraphs: [
+      "Jones became the first executive secretary of the National Urban League. His 20-year tenure with the Urban League has exceeded those of all his successors in office.",
+      "A versatile leader, he organized the first three fraternity chapters that branched out from Cornell — Beta at Howard, Gamma at Virginia Union University, and the original Delta at the University of Toronto in Canada. In addition to becoming Alpha Chapter's second president and joining with Callis in creating the fraternity name, Jones was a member of the first Committees on Constitution and Organization and helped write the fraternity ritual.",
+      "Jones also has the distinction of being one of the first initiates as well as an original founder. His status as a founder was not finally established until 1952.",
+    ],
   },
   {
     name: "George Biddle Kelley",
     years: "1884–1962",
     photo: "kelley.jpg",
-    bio: "Kelley became the first African American engineer registered in the state of New York. Not only was he the strongest proponent of the fraternity idea among the organization's founders, the civil engineering student also became Alpha Chapter's first president. He served on committees that worked out the handshake and ritual. Kelley was popular with the brotherhood. He resided in Troy, New York, and was active with Beta Pi Lambda Chapter in Albany.",
+    cardBio: "Kelley became the first African American engineer registered in the state of New York.",
+    bioParagraphs: [
+      "Kelley became the first African American engineer registered in the state of New York.",
+      "Not only was he the strongest proponent of the fraternity idea among the organization's founders, the civil engineering student also became Alpha Chapter's first president. He served on committees that worked out the handshake and ritual.",
+      "Kelley was popular with the brotherhood. He resided in Troy, New York, and was active with Beta Pi Lambda Chapter in Albany.",
+    ],
   },
   {
     name: "Nathaniel Allison Murray",
     years: "1884–1959",
     photo: "murray.jpg",
-    bio: "Murray pursued graduate work after completing his undergraduate studies at Howard. He later returned home to Washington, D.C., where he taught in public schools. Much of his career was spent at Armstrong Vocational High School in the District of Columbia. He was a member of Alpha Chapter's first committee on organization of the new fraternal group, as well as the Committee on the Grip. A charter member of Washington's Mu Lambda Chapter, Murray was a frequent attendee of general conventions.",
+    cardBio: "Murray pursued graduate work after completing his undergraduate studies at Howard.",
+    bioParagraphs: [
+      "Murray pursued graduate work after completing his undergraduate studies at Howard. He later returned home to Washington, D.C., where he taught in public schools. Much of his career was spent at Armstrong Vocational High School in the District of Columbia.",
+      "He was a member of Alpha Chapter's first committee on organization of the new fraternal group, as well as the Committee on the Grip.",
+      "A charter member of Washington's Mu Lambda Chapter, Murray was a frequent attendee of general conventions.",
+    ],
   },
   {
     name: "Robert Harold Ogle",
     years: "1886–1936",
     photo: "ogle.jpg",
-    bio: "Ogle entered the career secretarial field and had the unique privilege of serving as a professional staff member to the United States Senate Committee on Appropriations. He was an African American pioneer in his Capitol Hill position. He proposed the fraternity's colors and was Alpha Chapter's first secretary. Ogle joined Kelley in working out the first ritual and later became a charter member of Washington's Mu Lambda Chapter.",
+    cardBio: "Ogle entered the career secretarial field and had the unique privilege of serving as a professional staff member to the United States Senate Committee on Appropriations.",
+    bioParagraphs: [
+      "Ogle entered the career secretarial field and had the unique privilege of serving as a professional staff member to the United States Senate Committee on Appropriations. He was an African American pioneer in his Capitol Hill position.",
+      "He proposed the fraternity's colors and was Alpha Chapter's first secretary.",
+      "Ogle joined Kelley in working out the first ritual and later became a charter member of Washington's Mu Lambda Chapter.",
+    ],
   },
   {
     name: "Vertner Woodson Tandy",
     years: "1885–1949",
     photo: "tandy.jpg",
-    bio: "Tandy became the state of New York's first registered Black architect, with offices on Broadway in New York City. Tandy was the designer of the fraternity pin, and holds the distinction of being the first African American to pass the military commissioning examination — he was commissioned first lieutenant in the 15th Infantry of the New York State National Guard. He was Alpha Chapter's first treasurer and took the initiative to incorporate the fraternity. Among the buildings he designed is Saint Philip's Episcopal Church in New York City.",
+    cardBio: "Tandy became the state of New York's first registered Black architect, with offices on Broadway in New York City.",
+    bioParagraphs: [
+      "Tandy became the state of New York's first registered Black architect, with offices on Broadway in New York City.",
+      "Tandy was the designer of the fraternity pin, and holds the distinction of being the first African American to pass the military commissioning examination — he was commissioned first lieutenant in the 15th Infantry of the New York State National Guard.",
+      "He was Alpha Chapter's first treasurer and took the initiative to incorporate the fraternity. Among the buildings he designed is Saint Philip's Episcopal Church in New York City.",
+    ],
   },
 ];

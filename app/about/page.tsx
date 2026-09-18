@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import TiltCard from "@/components/TiltCard";
-import FounderCard from "@/components/FounderCard";
+import SevenJewelsGrid from "@/components/SevenJewelsGrid";
 import InstagramFeed from "@/components/InstagramFeed";
 import SectionHeading from "@/components/SectionHeading";
 import { buildMetadata } from "@/lib/seo";
@@ -82,11 +82,7 @@ export default function AboutPage() {
             />
           </Reveal>
           <Reveal>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {founders.map((founder) => (
-                <FounderCard key={founder.name} founder={founder} />
-              ))}
-            </div>
+            <SevenJewelsGrid founders={founders} />
           </Reveal>
         </div>
       </section>
