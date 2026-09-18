@@ -1,12 +1,12 @@
 export const charterMembers: string[] = [
-  "Jessie O. Richards",
-  "William H. Mitchell",
-  "Rudolph Moses",
-  "C.C. Haydel",
-  "A.P. Tureaud",
-  "Willard Dumas",
-  "Marion B. Bracy",
-  "Joseph K. Byrd",
+  "Bro. Lucien Alexis",
+  "Bro. Osceola Blanchet",
+  "Bro. Edward M. Coleman",
+  "Bro. C.C. Haydell",
+  "Bro. William H. Mitchell",
+  "Bro. Rudolph Moses",
+  "Bro. Jesse O. Richards",
+  "Bro. Robert E. Jones",
 ];
 
 export type NotableMember = {

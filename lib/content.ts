@@ -10,6 +10,7 @@ export type LegacyEntry = {
   initials: string;
   name: string;
   description: string;
+  photo?: string;
 };
 
 export const legacyTimeline: LegacyEntry[] = [
@@ -19,6 +20,7 @@ export const legacyTimeline: LegacyEntry[] = [
     name: "Alexander Pierre Tureaud Sr.",
     description:
       "Alexander Pierre Tureaud Sr. was an American civil rights attorney and NAACP leader who spearheaded legal challenges to segregation in Louisiana. A Howard Law graduate and associate of Thurgood Marshall, he won landmark cases ending Jim Crow in New Orleans schools, securing equal pay for Black teachers, integrating LSU, and defending early sit-in protests at the U.S. Supreme Court.",
+    photo: "Alexander Pierre Tureaud Sr.jpg",
   },
   {
     year: "1946",
@@ -26,6 +28,7 @@ export const legacyTimeline: LegacyEntry[] = [
     name: 'Ernest "Dutch" Morial',
     description:
       "First Black mayor of New Orleans, and the first Black graduate of LSU Law School. Morial was elected the 23rd General President of Alpha Phi Alpha Fraternity, Inc.",
+    photo: "morial.jpg",
   },
   {
     year: "1962",
@@ -33,6 +36,7 @@ export const legacyTimeline: LegacyEntry[] = [
     name: "Emmett Bashful",
     description:
       "Educator and administrator who helped shape higher education access across the city. First chancellor of Southern University of New Orleans.",
+    photo: "bashful.jpg",
   },
   {
     year: "1974",
@@ -40,6 +44,7 @@ export const legacyTimeline: LegacyEntry[] = [
     name: "Charles Teamer, Sr.",
     description:
       "Chancellor and civic leader whose work strengthened Black colleges in New Orleans. Teamer was elected the 27th General President of Alpha Phi Alpha Fraternity, Inc.",
+    photo: "teamer.jpg",
   },
 ];
 
@@ -245,9 +250,25 @@ export const news: NewsItem[] = [
   },
 ];
 
-export const navLinks = [
+export type NavLink = {
+  href: string;
+  label: string;
+  children?: { href: string; label: string }[];
+};
+
+export const navLinks: NavLink[] = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
+  {
+    href: "/about",
+    label: "About",
+    children: [
+      { href: "/about", label: "Our History" },
+      { href: "/about/seven-jewels", label: "Seven Jewels" },
+      { href: "/about/chapter-history", label: "Chapter History" },
+      { href: "/about/notable-brothers", label: "Notable Brothers" },
+      { href: "/about/college-chapters", label: "College Chapters" },
+    ],
+  },
   { href: "/notable-members", label: "Notable Members" },
   { href: "/leadership", label: "Leadership" },
   { href: "/programs", label: "Programs" },

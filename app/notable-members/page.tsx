@@ -68,17 +68,21 @@ export default function NotableMembersPage() {
           </Reveal>
           <Reveal>
             <ul className="columns-2 gap-x-10 sm:columns-3 lg:columns-4">
-              {pastPresidents.map((name, i) => (
-                <li key={`${name}-${i}`} className="mb-2.5 break-inside-avoid text-[15px] text-text-onlight/75">
-                  {name}
+              {pastPresidents.map((president, i) => (
+                <li
+                  key={`${president.name}-${i}`}
+                  className="mb-2.5 flex flex-wrap items-center gap-x-2 gap-y-1 break-inside-avoid text-[15px] text-text-onlight/75"
+                >
+                  <span>{president.name}</span>
+                  {president.badge && (
+                    <span className="inline-block flex-shrink-0 rounded-full border border-gold/30 bg-gold/8 px-2 py-0.5 text-[10px] font-semibold tracking-[0.04em] text-gold-text uppercase">
+                      {president.badge}
+                    </span>
+                  )}
                 </li>
               ))}
             </ul>
           </Reveal>
-          <div className="mt-8 space-y-1 text-[13px] text-text-onlight/55">
-            <p>* 23rd General President of Alpha Phi Alpha</p>
-            <p>** 27th General President of Alpha Phi Alpha Fraternity, Inc.</p>
-          </div>
         </div>
       </section>
     </>
