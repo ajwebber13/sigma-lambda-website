@@ -6,8 +6,7 @@ export const chapter = {
 };
 
 export type LegacyEntry = {
-  year: string;
-  initials: string;
+  year?: string;
   name: string;
   description: string;
   photo?: string;
@@ -16,7 +15,6 @@ export type LegacyEntry = {
 export const legacyTimeline: LegacyEntry[] = [
   {
     year: "1925",
-    initials: "AT",
     name: "Alexander Pierre Tureaud Sr.",
     description:
       "Alexander Pierre Tureaud Sr. was an American civil rights attorney and NAACP leader who spearheaded legal challenges to segregation in Louisiana. A Howard Law graduate and associate of Thurgood Marshall, he won landmark cases ending Jim Crow in New Orleans schools, securing equal pay for Black teachers, integrating LSU, and defending early sit-in protests at the U.S. Supreme Court.",
@@ -24,7 +22,6 @@ export const legacyTimeline: LegacyEntry[] = [
   },
   {
     year: "1946",
-    initials: "DM",
     name: 'Ernest "Dutch" Morial',
     description:
       "First Black mayor of New Orleans, and the first Black graduate of LSU Law School. Morial was elected the 23rd General President of Alpha Phi Alpha Fraternity, Inc.",
@@ -32,7 +29,6 @@ export const legacyTimeline: LegacyEntry[] = [
   },
   {
     year: "1962",
-    initials: "EB",
     name: "Emmett Bashful",
     description:
       "Educator and administrator who helped shape higher education access across the city. First chancellor of Southern University of New Orleans.",
@@ -40,11 +36,23 @@ export const legacyTimeline: LegacyEntry[] = [
   },
   {
     year: "1974",
-    initials: "CT",
     name: "Charles Teamer, Sr.",
     description:
       "Chancellor and civic leader whose work strengthened Black colleges in New Orleans. Teamer was elected the 27th General President of Alpha Phi Alpha Fraternity, Inc.",
     photo: "teamer.jpg",
+  },
+  {
+    name: "Dr. Norman C. Francis",
+    description: "Longest Serving President of Xavier University of Louisiana.",
+    photo: "Norman-Francis.jpeg",
+  },
+  {
+    name: "Omar Mason, Esq.",
+    description: "Judge, Civil District Court of Louisiana.",
+  },
+  {
+    name: "Ed Murray, Esq.",
+    description: "Louisiana House of Representatives, District 97.",
   },
 ];
 
@@ -181,8 +189,10 @@ export const programs: Program[] = [
 
 export type EventItem = {
   slug: string;
-  day: string;
-  month: string;
+  day?: string;
+  month?: string;
+  /** For events with no single date — shown in the calendar tile instead of day/month, e.g. "3RD WED". */
+  recurring?: string;
   title: string;
   location: string;
   time: string;
@@ -192,11 +202,11 @@ export type EventItem = {
 export const events: EventItem[] = [
   {
     slug: "centennial-scholarship-gala",
-    day: "18",
-    month: "OCT",
+    day: "05",
+    month: "DEC",
     title: "Centennial Scholarship Gala",
-    location: "Hyatt Regency New Orleans",
-    time: "6:30 PM",
+    location: "Xavier University of Louisiana Convocation Center, New Orleans, Louisiana",
+    time: "7:00 PM – 11:00 PM",
     action: "RSVP",
   },
   {
@@ -210,11 +220,10 @@ export const events: EventItem[] = [
   },
   {
     slug: "monthly-chapter-meeting",
-    day: "14",
-    month: "NOV",
-    title: "Monthly Chapter Meeting",
+    recurring: "3RD WED",
+    title: "Monthly Chapter Meetings",
     location: "Members only",
-    time: "7:00 PM",
+    time: "7:30 PM",
     action: "Add to calendar",
   },
   {
@@ -269,9 +278,25 @@ export const navLinks: NavLink[] = [
       { href: "/about/college-chapters", label: "College Chapters" },
     ],
   },
-  { href: "/notable-members", label: "Notable Members" },
-  { href: "/leadership", label: "Leadership" },
+  {
+    href: "/leadership",
+    label: "Leadership",
+    children: [
+      { href: "/leadership", label: "Leadership" },
+      { href: "/leadership/past-presidents", label: "Past Presidents" },
+    ],
+  },
   { href: "/programs", label: "Programs" },
-  { href: "/events", label: "Events" },
+  {
+    href: "/events",
+    label: "Events",
+    children: [
+      { href: "/events", label: "Events" },
+      { href: "/events/founders-day", label: "Founder's Day" },
+      { href: "/events/scholarship-gala", label: "Scholarship Gala" },
+      { href: "/events/gallery", label: "Gallery" },
+      { href: "/events/rsvp", label: "RSVP" },
+    ],
+  },
   { href: "/news", label: "News" },
 ];

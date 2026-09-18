@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
-import InstagramFeed from "@/components/InstagramFeed";
 import SectionHeading from "@/components/SectionHeading";
 import { buildMetadata } from "@/lib/seo";
 import { foundingHistory } from "@/lib/founders";
@@ -34,21 +33,6 @@ export default function AboutPage() {
                 <p key={i}>{paragraph}</p>
               ))}
             </div>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="bg-paper py-18 lg:py-27">
-        <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
-          <Reveal>
-            <SectionHeading
-              tag="Follow along"
-              title="Sigma Lambda on Instagram."
-              className="mb-10"
-            />
-          </Reveal>
-          <Reveal>
-            <InstagramFeed />
           </Reveal>
         </div>
       </section>

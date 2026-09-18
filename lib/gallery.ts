@@ -5,6 +5,7 @@ export type GalleryImage = {
 
 export type GallerySection = {
   title: string;
+  slug: string;
   images: GalleryImage[];
 };
 
@@ -17,6 +18,7 @@ const galaCentennialPhotoNumbers = [
 export const gallerySections: GallerySection[] = [
   {
     title: "Sigma Lambda Gala 2025 — Centennial Celebration",
+    slug: "gala-2025-centennial",
     images: galaCentennialPhotoNumbers.map((n) => ({
       src: `/images/gallery/gala-2025-centennial/SigmaLambdaGala2025-${n}.jpg`,
       alt: "Sigma Lambda Gala 2025 — Centennial Celebration",

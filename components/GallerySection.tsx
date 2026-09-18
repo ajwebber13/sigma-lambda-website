@@ -25,7 +25,7 @@ export default function GallerySection({ section }: { section: GallerySectionTyp
   }, [open, section.images.length]);
 
   return (
-    <div>
+    <div id={section.slug} className="scroll-mt-28">
       <h3 className="mb-5 font-serif text-xl font-semibold">{section.title}</h3>
       <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-4">
         {section.images.map((image, i) => (

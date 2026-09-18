@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
-import RsvpButton from "@/components/RsvpButton";
 import SectionHeading from "@/components/SectionHeading";
 import { buildMetadata } from "@/lib/seo";
-import { events } from "@/lib/content";
-import { createClient } from "@/lib/supabase/server";
+import { gallerySections } from "@/lib/gallery";
 
 export const metadata: Metadata = buildMetadata({
   title: "Events & Calendar",
@@ -14,18 +13,7 @@ export const metadata: Metadata = buildMetadata({
   path: "/events",
 });
 
-export default async function EventsPage() {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  let rsvpedSlugs = new Set<string>();
-  if (user) {
-    const { data: rsvps } = await supabase.from("event_rsvps").select("event_slug").eq("user_id", user.id);
-    rsvpedSlugs = new Set(rsvps?.map((r) => r.event_slug));
-  }
-
+export default function EventsPage() {
   return (
     <>
       <section className="bg-ink pt-[150px] pb-16 text-text-ondark">
@@ -34,11 +22,12 @@ export default async function EventsPage() {
             Events &amp; calendar
           </span>
           <h1 className="max-w-[820px] text-[36px] leading-[1.08] font-semibold sm:text-[52px]">
-            What&apos;s next for the chapter.
+            Cordiality exists among all who abide within…
           </h1>
           <p className="mt-6 max-w-[65ch] text-lg leading-relaxed text-text-ondark/78">
-            Browse the chapter&apos;s full calendar below, or sign in to RSVP to the events we&apos;re
-            tracking here — QR check-in is coming with the members-only portal in a later phase.
+            The Brothers of Sigma Lambda Chapter invites you to attend our upcoming programs.
+            Below you will find a description of each event and a chance to register. We look
+            forward to seeing you soon!
           </p>
         </div>
       </section>
@@ -86,12 +75,14 @@ export default async function EventsPage() {
         <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
           <Reveal>
             <SectionHeading
-              tag="Full chapter calendar"
-              title="Everything on the calendar."
+              tag="Photo albums"
+              title="Relive the last event."
+              description="Browse photos by event — click an album to open the full gallery."
               className="mb-10"
             />
           </Reveal>
-          <Reveal>
+          {/*
+            Google Calendar embed — hidden in favor of the gallery preview below.
             <div className="overflow-hidden rounded-lg border border-line">
               <iframe
                 src="https://calendar.google.com/calendar/embed?src=neworleansalphas%40gmail.com&ctz=America/Chicago"
@@ -102,53 +93,55 @@ export default async function EventsPage() {
                 loading="lazy"
               />
             </div>
-          </Reveal>
+          */}
+          {gallerySections.length === 0 ? (
+            <Reveal>
+              <p className="text-text-onlight/60">Event photos are on the way — check back soon.</p>
+            </Reveal>
+          ) : (
+            <Reveal>
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+                {gallerySections.map((section) => (
+                  <Link
+                    key={section.slug}
+                    href={`/events/gallery#${section.slug}`}
+                    className="group relative aspect-square overflow-hidden rounded-lg border border-line"
+                  >
+                    <Image
+                      src={section.images[0].src}
+                      alt=""
+                      fill
+                      sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div
+                      className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/10 to-transparent"
+                      aria-hidden="true"
+                    />
+                    <span className="absolute inset-x-0 bottom-0 p-3 text-[12.5px] font-semibold leading-tight text-text-ondark">
+                      {section.title}
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </Reveal>
+          )}
         </div>
       </section>
 
       <section className="bg-paper py-18 lg:py-27">
         <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
           <Reveal>
-            <SectionHeading
-              tag="RSVP"
-              title="Events you can RSVP to."
-              description="The specific events the chapter portal tracks attendance for."
-              className="mb-10"
-            />
-          </Reveal>
-          <Reveal>
-            <div className="mx-auto max-w-[760px]">
-              {events.map((event, i) => (
-                <div
-                  key={event.title}
-                  className={`flex flex-wrap items-center gap-5 py-6 ${
-                    i === events.length - 1 ? "" : "border-b border-line"
-                  }`}
-                >
-                  <div className="w-16.5 flex-shrink-0 rounded bg-ink py-2.5 text-center text-text-ondark">
-                    <b className="block font-serif text-[22px] text-gold-bright">{event.day}</b>
-                    <span className="text-[10.5px] tracking-[0.06em] text-text-ondark/65">{event.month}</span>
-                  </div>
-                  <div className="flex-1">
-                    <h2 className="text-[17px] font-semibold">{event.title}</h2>
-                    <div className="mt-1 text-sm text-text-onlight/55">
-                      {event.location} · {event.time}
-                    </div>
-                  </div>
-                  {event.action === "RSVP" ? (
-                    <RsvpButton
-                      eventSlug={event.slug}
-                      isSignedIn={Boolean(user)}
-                      initiallyRsvped={rsvpedSlugs.has(event.slug)}
-                    />
-                  ) : (
-                    <div className="flex-shrink-0 text-sm font-bold whitespace-nowrap text-gold-text">
-                      {event.action} →
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
+            <Link
+              href="/events/rsvp"
+              className="mx-auto flex max-w-[760px] flex-wrap items-center justify-between gap-5 rounded-lg border border-line bg-ink px-7 py-7 text-text-ondark transition-transform hover:-translate-y-0.5"
+            >
+              <div>
+                <span className="text-[12.5px] font-semibold tracking-[0.06em] text-gold-bright">RSVP</span>
+                <h2 className="mt-2.5 text-lg font-semibold">Events you can RSVP to</h2>
+                <p className="mt-1.5 text-sm text-text-ondark/60">See dates and reserve your spot →</p>
+              </div>
+            </Link>
           </Reveal>
         </div>
       </section>
