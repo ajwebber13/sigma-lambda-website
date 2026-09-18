@@ -2,6 +2,15 @@
 
 import { useState } from "react";
 import type { Program } from "@/lib/content";
+import GallerySection from "@/components/GallerySection";
+import { programGalleries } from "@/lib/gallery";
+
+function slugifyProgramName(name: string) {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
 
 export default function ProgramsGrid({ programs }: { programs: Program[] }) {
   const [category, setCategory] = useState<Program["category"]>("national");
@@ -30,12 +39,20 @@ export default function ProgramsGrid({ programs }: { programs: Program[] }) {
         ))}
       </div>
       <div className={`grid grid-cols-1 gap-px bg-text-ondark/12 ${cols >= 2 ? "sm:grid-cols-2" : ""} ${gridColsClass}`}>
-        {filtered.map((program) => (
-          <div key={program.name} className="bg-ink px-6.5 py-7.5 transition-colors hover:bg-[#1c1610]">
-            <h2 className="text-lg font-semibold">{program.name}</h2>
-            <p className="mt-2.5 text-sm leading-relaxed text-text-ondark/60">{program.description}</p>
-          </div>
-        ))}
+        {filtered.map((program) => {
+          const gallery = programGalleries.find((g) => g.slug === slugifyProgramName(program.name));
+          return (
+            <div key={program.name} className="bg-ink px-6.5 py-7.5 transition-colors hover:bg-[#1c1610]">
+              {gallery && (
+                <div className="mb-5">
+                  <GallerySection section={gallery} variant="thumbnail" />
+                </div>
+              )}
+              <h2 className="text-lg font-semibold">{program.name}</h2>
+              <p className="mt-2.5 text-sm leading-relaxed text-text-ondark/60">{program.description}</p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

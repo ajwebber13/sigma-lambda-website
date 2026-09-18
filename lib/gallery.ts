@@ -25,3 +25,34 @@ export const gallerySections: GallerySection[] = [
     })),
   },
 ];
+
+const scholarshipFoundationPhotoNumbers = [184, 188, 192, 198, 204, 220, 257];
+
+// One entry per chapter program with photos — slug must match the program's
+// slugified name (see ProgramsGrid) and the folder under public/images/<slug>/.
+export const programGalleries: GallerySection[] = [
+  {
+    title: "Alpha Youth Leadership Academy",
+    slug: "alpha-youth-leadership-academy",
+    images: Array.from({ length: 7 }, (_, i) => i + 1).map((n) => ({
+      src: `/images/alpha-youth-leadership-academy/${n}.jpg`,
+      alt: "Alpha Youth Leadership Academy",
+    })),
+  },
+  {
+    title: "Scholarship Foundation",
+    slug: "scholarship-foundation",
+    images: scholarshipFoundationPhotoNumbers.map((n) => ({
+      src: `/images/scholarship-foundation/SigmaLambdaGala2025-${n}.jpg`,
+      alt: "Scholarship Foundation",
+    })),
+  },
+  {
+    title: "Social Justice",
+    slug: "social-justice",
+    images: Array.from({ length: 12 }, (_, i) => i + 1).map((n) => ({
+      src: `/images/social-justice/${n}.jpg`,
+      alt: "Social Justice",
+    })),
+  },
+];
