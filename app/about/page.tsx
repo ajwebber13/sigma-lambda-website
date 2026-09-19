@@ -78,8 +78,7 @@ export default function AboutPage() {
           <Reveal>
             <SectionHeading
               tag="Mission"
-              title="Scholarship, fellowship, good character, and the uplift of humanity."
-              description="Sigma Lambda carries forward Alpha Phi Alpha's founding cardinal principles through mentorship, civic engagement and community service across New Orleans — while giving every member a clear place to stay connected to the chapter."
+              title="Alpha Phi Alpha Fraternity, Inc. develops leaders, promotes brotherhood and academic excellence, while providing service and advocacy for our communities."
             />
           </Reveal>
         </div>
