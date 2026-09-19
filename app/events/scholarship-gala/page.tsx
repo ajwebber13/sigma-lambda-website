@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import RsvpButton from "@/components/RsvpButton";
 import SectionHeading from "@/components/SectionHeading";
@@ -40,13 +41,31 @@ export default async function ScholarshipGalaPage() {
             Scholarship Gala
           </span>
           <h1 className="max-w-[820px] text-[36px] leading-[1.08] font-semibold sm:text-[52px]">
-            The chapter&apos;s marquee fundraiser.
+            Scholarship Gala 2026
           </h1>
           <p className="mt-6 max-w-[65ch] text-lg leading-relaxed text-text-ondark/78">
             Each year, the Scholarship Foundation and Sigma Lambda Chapter host a gala during
             Founders&apos; Week — funding scholarships for young men pursuing their education in
             New Orleans.
           </p>
+        </div>
+      </section>
+
+      <section className="py-18 lg:py-27">
+        <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
+          <Reveal>
+            <div className="mx-auto max-w-[600px] overflow-hidden rounded-lg border border-line">
+              <div className="relative aspect-[1060/1484] w-full">
+                <Image
+                  src="/images/savethedate-scholarshipgala-2026.jpg"
+                  alt="Save the Date — Sigma Lambda Chapter Scholarship Gala 2026"
+                  fill
+                  sizes="(min-width: 640px) 600px, 100vw"
+                  className="object-contain"
+                />
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
