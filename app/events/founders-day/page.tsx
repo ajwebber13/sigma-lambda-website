@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import Reveal from "@/components/Reveal";
-import SectionHeading from "@/components/SectionHeading";
+import FoundersDayNotifyForm from "@/components/FoundersDayNotifyForm";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -11,53 +9,68 @@ export const metadata: Metadata = buildMetadata({
   path: "/events/founders-day",
 });
 
+const badges = [
+  "Founded December 4, 1906",
+  "Cornell University · Ithaca, NY",
+  "120 Years of Brotherhood",
+];
+
 export default function FoundersDayPage() {
   return (
-    <>
-      <section className="bg-ink pt-[150px] pb-16 text-text-ondark">
-        <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
-          <span className="mb-3.5 block text-[13px] font-semibold tracking-[0.03em] text-gold-bright">
-            Founder&apos;s Day · December 4, 2026
-          </span>
-          <h1 className="max-w-[820px] text-[36px] leading-[1.08] font-semibold sm:text-[52px]">
-            120 Years of Brotherhood
-          </h1>
-          <p className="mt-6 max-w-[65ch] text-lg leading-relaxed text-text-ondark/78">
-            On December 4, 1906, seven college men founded Alpha Phi Alpha Fraternity, Inc. at
-            Cornell University. Sigma Lambda Chapter marks the anniversary every year — and 2026
-            brings the fraternity&apos;s 120th.
-          </p>
-        </div>
-      </section>
+    <section className="relative flex min-h-screen flex-col items-center overflow-hidden bg-ink px-5 pt-[150px] pb-10 text-center text-text-ondark sm:px-8">
+      {/* Ghosted watermark */}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-serif text-[260px] leading-none font-bold text-gold/[0.045] select-none sm:text-[420px] lg:text-[560px]"
+      >
+        120
+      </span>
 
-      <section className="py-18 lg:py-27">
-        <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
-          <Reveal>
-            <SectionHeading
-              tag="The day"
-              title="A century and two decades of Scholarship, Leadership and Tenacity."
-              description="Founder's Day honors the Seven Founding Jewels and everything the fraternity has built since — a legacy Sigma Lambda has carried in New Orleans since 1925. Details for the chapter's 2026 Founder's Day program will be posted here and on the full calendar as they're confirmed."
-              className="mb-10"
-            />
-          </Reveal>
-          <Reveal>
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="/about"
-                className="rounded-sm bg-gold px-6.5 py-4 text-[14.5px] font-bold text-ink shadow-[0_18px_40px_-18px_rgba(140,109,27,0.45)] transition-transform hover:-translate-y-0.5"
-              >
-                Read the founding history
-              </Link>
-              <Link
-                href="/events"
-                className="rounded-sm border border-line px-6.5 py-4 text-[14.5px] font-semibold text-text-onlight transition-colors hover:border-gold-deep"
-              >
-                Back to the full calendar
-              </Link>
-            </div>
-          </Reveal>
+      <div className="relative flex w-full max-w-[900px] flex-1 flex-col items-center">
+        <div className="flex w-full items-center gap-4 sm:gap-6">
+          <span className="h-px flex-1 bg-gold/40" />
+          <span className="text-[11px] font-semibold tracking-[0.22em] text-gold-bright uppercase sm:text-[13px]">
+            Sigma Lambda Chapter · Est. 1925
+          </span>
+          <span className="h-px flex-1 bg-gold/40" />
         </div>
-      </section>
-    </>
+
+        <p className="mt-10 font-serif text-3xl text-gold-bright italic sm:text-4xl">Winter</p>
+        <h1 className="font-serif text-[104px] leading-[0.95] font-bold text-text-ondark sm:text-[168px] lg:text-[208px]">
+          2026
+        </h1>
+
+        <div className="my-8 h-px w-24 bg-gold/60" />
+
+        <h2 className="max-w-[760px] font-serif text-[28px] leading-[1.15] font-bold tracking-[0.02em] uppercase sm:text-[40px] lg:text-[48px]">
+          Alpha Phi Alpha 120th Anniversary
+        </h2>
+        <p className="mt-4 font-serif text-base text-text-ondark/65 italic sm:text-lg">
+          Sigma Lambda Chapter of Alpha Phi Alpha Fraternity, Inc.
+        </p>
+
+        <ul className="mt-9 flex flex-wrap justify-center gap-3">
+          {badges.map((badge) => (
+            <li
+              key={badge}
+              className="rounded-full border border-gold/40 px-4 py-2 text-[12.5px] font-medium text-text-ondark/85 sm:text-[13.5px]"
+            >
+              {badge}
+            </li>
+          ))}
+        </ul>
+
+        <p className="mt-10 text-[15px] text-text-ondark/60">More Details Coming Soon.</p>
+
+        <div className="mt-6 flex w-full justify-center">
+          <FoundersDayNotifyForm />
+        </div>
+        <p className="mt-4 text-xs text-text-ondark/45">We&apos;ll reach out when details are announced.</p>
+      </div>
+
+      <p className="relative mt-16 max-w-[820px] text-[10.5px] leading-relaxed tracking-[0.2em] text-text-ondark/40 uppercase sm:text-[11.5px]">
+        Alpha Phi Alpha · 1906 – 2026 · 120 Years of Brotherhood · Sigma Lambda Chapter
+      </p>
+    </section>
   );
 }
