@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import { buildMetadata } from "@/lib/seo";
@@ -28,10 +29,45 @@ export default function AboutPage() {
       <section className="bg-paper py-18 lg:py-27">
         <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
           <Reveal>
-            <div className="max-w-[75ch] space-y-5 text-[16.5px] leading-relaxed text-text-onlight/78">
-              {foundingHistory.map((paragraph, i) => (
-                <p key={i}>{paragraph}</p>
-              ))}
+            <div className="mb-12 overflow-hidden rounded-lg border border-line">
+              <Image
+                src="/images/founders/jewels.jpg"
+                alt="The Seven Founding Jewels of Alpha Phi Alpha Fraternity, Inc."
+                width={1600}
+                height={320}
+                sizes="(min-width: 1180px) 1116px, 100vw"
+                priority
+                className="h-auto w-full"
+              />
+            </div>
+          </Reveal>
+          <Reveal>
+            <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1fr)_400px]">
+              <div className="max-w-[75ch] space-y-5 text-[16.5px] leading-relaxed text-text-onlight/78">
+                {foundingHistory.map((paragraph, i) => (
+                  <p key={i}>{paragraph}</p>
+                ))}
+              </div>
+              <div className="mx-auto w-full max-w-[400px] lg:mx-0">
+                <figure>
+                  <div className="overflow-hidden rounded-lg border border-line">
+                    <Image
+                      src={`/images/${encodeURIComponent(
+                        "Alpha Phi Alpha house and Singleton residence PC Cornell University Library.jpg",
+                      )}`}
+                      alt="The Alpha Phi Alpha house and Singleton residence at 411 East State Street, Ithaca, New York"
+                      width={1045}
+                      height={1760}
+                      sizes="(min-width: 1024px) 400px, 100vw"
+                      className="h-auto w-full"
+                    />
+                  </div>
+                  <figcaption className="mt-3 text-xs leading-relaxed text-text-onlight/50">
+                    411 East State Street — the Alpha Phi Alpha house and Singleton residence.
+                    Photo: Cornell University Library
+                  </figcaption>
+                </figure>
+              </div>
             </div>
           </Reveal>
         </div>
