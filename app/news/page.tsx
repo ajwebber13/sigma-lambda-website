@@ -16,10 +16,10 @@ export default function NewsPage() {
       <section className="bg-ink pt-[150px] pb-16 text-text-ondark">
         <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
           <span className="mb-3.5 block text-[13px] font-semibold tracking-[0.03em] text-gold-bright">
-            News &amp; announcements
+            NEWS  &amp; ANNOUCEMENTS
           </span>
           <h1 className="max-w-[820px] text-[36px] leading-[1.08] font-semibold sm:text-[52px]">
-            What&apos;s happening at Sigma Lambda.
+          Events with the Sigma Lambda Chapter of Alpha Phi Alpha Fraternity, Inc.
           </h1>
         </div>
       </section>
