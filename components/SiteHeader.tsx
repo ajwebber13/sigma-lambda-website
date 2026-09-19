@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { navLinks } from "@/lib/content";
+import { navLinks, type NavLink } from "@/lib/content";
 
 function Chevron({ open }: { open: boolean }) {
   return (
@@ -20,18 +20,122 @@ function Chevron({ open }: { open: boolean }) {
   );
 }
 
+function DesktopNavDropdown({ link }: { link: NavLink & { children: { href: string; label: string }[] } }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") setOpen(false);
+    }
+    function onPointerDown(e: PointerEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+    window.addEventListener("keydown", onKeyDown);
+    window.addEventListener("pointerdown", onPointerDown);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("pointerdown", onPointerDown);
+    };
+  }, [open]);
+
+  return (
+    <div
+      ref={ref}
+      className="group relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      <button
+        type="button"
+        className="relative flex items-center gap-1.5 py-1 text-[14.5px] font-medium text-text-ondark/90 hover:text-text-ondark"
+        aria-haspopup="true"
+        aria-expanded={open}
+        onClick={() => setOpen(true)}
+      >
+        {link.label}
+        <Chevron open={open} />
+        <span
+          className={`absolute inset-x-0 -bottom-0.5 h-px origin-left bg-gold transition-transform duration-200 ${
+            open ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+          }`}
+        />
+      </button>
+      <div
+        className={`absolute left-0 top-full pt-3 transition-opacity duration-150 ${
+          open ? "visible opacity-100" : "invisible opacity-0"
+        }`}
+      >
+        <div className="min-w-[220px] rounded-md border border-line bg-ink p-2 shadow-[0_18px_40px_-18px_rgba(0,0,0,0.6)]">
+          {link.children.map((child) => (
+            <Link
+              key={child.href}
+              href={child.href}
+              onClick={() => setOpen(false)}
+              className="block rounded px-3 py-2 text-[13.5px] text-text-ondark/80 hover:bg-white/5 hover:text-text-ondark"
+            >
+              {child.label}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MobileNavAccordion({
+  link,
+  onNavigate,
+}: {
+  link: NavLink & { children: { href: string; label: string }[] };
+  onNavigate: () => void;
+}) {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <div className="border-b border-line">
+      <button
+        type="button"
+        className="flex w-full items-center justify-between py-3.5 font-serif text-2xl text-text-ondark"
+        aria-expanded={expanded}
+        onClick={() => setExpanded((v) => !v)}
+      >
+        {link.label}
+        <Chevron open={expanded} />
+      </button>
+      <div
+        className={`overflow-hidden transition-[max-height] duration-300 ${
+          expanded ? "max-h-60" : "max-h-0"
+        }`}
+      >
+        <div className="flex flex-col gap-1 pb-4 pl-2">
+          {link.children.map((child) => (
+            <Link
+              key={child.href}
+              href={child.href}
+              onClick={onNavigate}
+              className="py-2 font-sans text-base text-text-ondark/75"
+            >
+              {child.label}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [aboutOpen, setAboutOpen] = useState(false);
-  const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const firstMenuLinkRef = useRef<HTMLAnchorElement>(null);
-  const aboutRef = useRef<HTMLDivElement>(null);
 
   function closeMenu() {
     setOpen(false);
-    setMobileAboutOpen(false);
   }
 
   useEffect(() => {
@@ -67,31 +171,12 @@ export default function SiteHeader() {
     function onKeyDown(e: KeyboardEvent) {
       if (e.key === "Escape") {
         setOpen(false);
-        setMobileAboutOpen(false);
         toggleRef.current?.focus();
       }
     }
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [open]);
-
-  useEffect(() => {
-    if (!aboutOpen) return;
-    function onKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape") setAboutOpen(false);
-    }
-    function onPointerDown(e: PointerEvent) {
-      if (aboutRef.current && !aboutRef.current.contains(e.target as Node)) {
-        setAboutOpen(false);
-      }
-    }
-    window.addEventListener("keydown", onKeyDown);
-    window.addEventListener("pointerdown", onPointerDown);
-    return () => {
-      window.removeEventListener("keydown", onKeyDown);
-      window.removeEventListener("pointerdown", onPointerDown);
-    };
-  }, [aboutOpen]);
 
   return (
     <header
@@ -117,47 +202,7 @@ export default function SiteHeader() {
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
           {navLinks.map((link) =>
             link.children ? (
-              <div
-                key={link.href}
-                ref={aboutRef}
-                className="group relative"
-                onMouseEnter={() => setAboutOpen(true)}
-                onMouseLeave={() => setAboutOpen(false)}
-              >
-                <button
-                  type="button"
-                  className="relative flex items-center gap-1.5 py-1 text-[14.5px] font-medium text-text-ondark/90 hover:text-text-ondark"
-                  aria-haspopup="true"
-                  aria-expanded={aboutOpen}
-                  onClick={() => setAboutOpen(true)}
-                >
-                  {link.label}
-                  <Chevron open={aboutOpen} />
-                  <span
-                    className={`absolute inset-x-0 -bottom-0.5 h-px origin-left bg-gold transition-transform duration-200 ${
-                      aboutOpen ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
-                    }`}
-                  />
-                </button>
-                <div
-                  className={`absolute left-0 top-full pt-3 transition-opacity duration-150 ${
-                    aboutOpen ? "visible opacity-100" : "invisible opacity-0"
-                  }`}
-                >
-                  <div className="min-w-[220px] rounded-md border border-line bg-ink p-2 shadow-[0_18px_40px_-18px_rgba(0,0,0,0.6)]">
-                    {link.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        onClick={() => setAboutOpen(false)}
-                        className="block rounded px-3 py-2 text-[13.5px] text-text-ondark/80 hover:bg-white/5 hover:text-text-ondark"
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              <DesktopNavDropdown key={link.href} link={link as NavLink & { children: { href: string; label: string }[] }} />
             ) : (
               <Link
                 key={link.href}
@@ -199,35 +244,11 @@ export default function SiteHeader() {
       >
         {navLinks.map((link, i) =>
           link.children ? (
-            <div key={link.href} className="border-b border-line">
-              <button
-                type="button"
-                className="flex w-full items-center justify-between py-3.5 font-serif text-2xl text-text-ondark"
-                aria-expanded={mobileAboutOpen}
-                onClick={() => setMobileAboutOpen((v) => !v)}
-              >
-                {link.label}
-                <Chevron open={mobileAboutOpen} />
-              </button>
-              <div
-                className={`overflow-hidden transition-[max-height] duration-300 ${
-                  mobileAboutOpen ? "max-h-60" : "max-h-0"
-                }`}
-              >
-                <div className="flex flex-col gap-1 pb-4 pl-2">
-                  {link.children.map((child) => (
-                    <Link
-                      key={child.href}
-                      href={child.href}
-                      onClick={closeMenu}
-                      className="py-2 font-sans text-base text-text-ondark/75"
-                    >
-                      {child.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
+            <MobileNavAccordion
+              key={`${link.href}-${open}`}
+              link={link as NavLink & { children: { href: string; label: string }[] }}
+              onNavigate={closeMenu}
+            />
           ) : (
             <Link
               key={link.href}
