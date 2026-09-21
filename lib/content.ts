@@ -237,28 +237,6 @@ export const events: EventItem[] = [
   },
 ];
 
-export type NewsItem = {
-  date?: string;
-  byline?: string;
-  title: string;
-  excerpt: string;
-};
-
-export const news: NewsItem[] = [
-  {
-    date: "June 24, 2017",
-    title: "New Orleans Alphas Award $6K in Scholarships",
-    excerpt:
-      "The chapter awarded $6,000 total to three young men at its 2017 Scholarship Breakfast at Dillard University: Seantrell Lemar (Dr. Norman C. Francis Outstanding Scholar, $3,000), Joshua Williams (Dr. Emmett W. Bashful Outstanding Scholar, $2,000), and Jacob Detiege (Dr. Rudolph J. Detiege Outstanding Scholar, $1,000). Over the previous 20 years, the chapter had awarded more than $25,000 in scholarships.",
-  },
-  {
-    byline: "By Brother Joseph Washington, Jr.",
-    title: "Sigma Lambda Chapter Impacts Young Men Through Scholarship",
-    excerpt:
-      "Profiles three scholarship recipients — Dylan Mitchell, Andre Wilson and Blake Woods — and the chapter's annual Scholarship Gala held during Founders Week.",
-  },
-];
-
 export type NavLink = {
   href: string;
   label: string;

@@ -11,6 +11,8 @@ export type NewsHighlight = {
   photo_url: string;
   label: string;
   photo_fit: "cover" | "contain";
+  source_url: string | null;
+  source_label: string | null;
   published: boolean;
   published_at: string;
   sort_order: number;

@@ -3,7 +3,6 @@ import HighlightCard from "@/components/HighlightCard";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import { buildMetadata } from "@/lib/seo";
-import { news } from "@/lib/content";
 import { getPublishedHighlights } from "@/lib/newsHighlights";
 
 export const metadata: Metadata = buildMetadata({
@@ -53,27 +52,6 @@ export default async function NewsPage() {
           ) : (
             <p className="text-sm text-text-onlight/55">Brother highlights are coming soon.</p>
           )}
-        </div>
-      </section>
-
-      <section className="border-t border-line py-18 lg:py-27">
-        <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
-          <p className="mb-10 text-sm text-text-onlight/55">
-            Recent chapter news coming soon — send us your latest updates.
-          </p>
-          <Reveal>
-            <div className="grid grid-cols-1 gap-px bg-line sm:grid-cols-2">
-              {news.map((item) => (
-                <div key={item.title} className="bg-ivory px-6.5 py-7">
-                  <div className="text-xs font-semibold tracking-[0.05em] text-gold-text">
-                    {item.date ?? item.byline}
-                  </div>
-                  <h2 className="mt-3 text-[17.5px] leading-tight font-semibold">{item.title}</h2>
-                  <p className="mt-2.5 text-sm leading-relaxed text-text-onlight/60">{item.excerpt}</p>
-                </div>
-              ))}
-            </div>
-          </Reveal>
         </div>
       </section>
     </>

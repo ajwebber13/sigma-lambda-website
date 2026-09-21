@@ -49,6 +49,8 @@ export default async function HighlightPage({ params }: Props) {
   if (!highlight) notFound();
 
   const fit = highlightPhotoFit(highlight);
+  // Only http(s) links are rendered as the source button.
+  const sourceUrl = highlight.source_url && /^https?:\/\//i.test(highlight.source_url) ? highlight.source_url : null;
 
   // Split on blank lines; tolerate CRLF and whitespace-only "blank" lines.
   const paragraphs = highlight.body.split(/\r?\n(?:[ \t]*\r?\n)+/).filter((p) => p.trim());
@@ -96,10 +98,28 @@ export default async function HighlightPage({ params }: Props) {
         <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
           <div className="max-w-[68ch] space-y-5 text-[17px] leading-relaxed text-text-onlight/85">
             {paragraphs.map((paragraph, i) => (
-              <p key={i}>{paragraph}</p>
+              // pre-line keeps single line breaks (e.g. a sign-off) inside a paragraph
+              <p key={i} className="whitespace-pre-line">
+                {paragraph.trim()}
+              </p>
             ))}
           </div>
-          <Link href="/news" className={`${backLinkClass} mt-12 text-gold-text focus-visible:outline-gold-deep`}>
+          {sourceUrl && (
+            <a
+              href={sourceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-10 inline-block rounded-sm bg-gold px-5 py-3 text-[13.5px] font-bold tracking-[0.02em] text-ink uppercase shadow-[0_18px_40px_-18px_rgba(140,109,27,0.45)] transition-transform hover:-translate-y-px focus-visible:outline-gold-deep"
+            >
+              Read the full article{highlight.source_label ? ` at ${highlight.source_label}` : ""}{" "}
+              <span aria-hidden="true">→</span>
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
+          )}
+          <Link
+            href="/news"
+            className={`${backLinkClass} ${sourceUrl ? "mt-8 block" : "mt-12"} text-gold-text focus-visible:outline-gold-deep`}
+          >
             ← Back to News
           </Link>
         </div>
