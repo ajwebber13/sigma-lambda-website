@@ -4,12 +4,14 @@ export default function SectionHeading({
   description,
   dark = false,
   className = "",
+  headingId,
 }: {
   tag: string;
   title: string;
   description?: string;
   dark?: boolean;
   className?: string;
+  headingId?: string;
 }) {
   return (
     <div className={`max-w-[640px] ${className}`}>
@@ -20,7 +22,7 @@ export default function SectionHeading({
       >
         {tag}
       </span>
-      <h2 className="text-[28px] leading-[1.12] font-semibold sm:text-[36px] lg:text-[42px]">{title}</h2>
+      <h2 id={headingId} className="text-[28px] leading-[1.12] font-semibold sm:text-[36px] lg:text-[42px]">{title}</h2>
       {description && (
         <p
           className={`mt-4 max-w-[70ch] text-[16.5px] leading-relaxed ${
