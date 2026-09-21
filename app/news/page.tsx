@@ -25,7 +25,7 @@ export default async function NewsPage() {
             NEWS  &amp; ANNOUNCEMENTS
           </span>
           <h1 className="max-w-[820px] text-[36px] leading-[1.08] font-semibold sm:text-[52px]">
-          Events with the Sigma Lambda Chapter of Alpha Phi Alpha Fraternity, Inc.
+            News from the Sigma Lambda Chapter of Alpha Phi Alpha Fraternity, Inc.
           </h1>
         </div>
       </section>
