@@ -45,7 +45,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${publicSans.variable}`}>
+    <html lang="en" className={`${fraunces.variable} ${publicSans.variable}`} suppressHydrationWarning>
       <body className="flex min-h-screen flex-col">
         <noscript>
           <style>{".reveal{opacity:1!important;transform:none!important;}"}</style>
