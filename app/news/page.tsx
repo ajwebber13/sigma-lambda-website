@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import HighlightCard from "@/components/HighlightCard";
 import Reveal from "@/components/Reveal";
-import SectionHeading from "@/components/SectionHeading";
 import { buildMetadata } from "@/lib/seo";
 import { getPublishedHighlights } from "@/lib/newsHighlights";
 
@@ -32,15 +31,6 @@ export default async function NewsPage() {
 
       <section className="py-18 lg:py-27" aria-labelledby="brother-highlights-heading">
         <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
-          <Reveal>
-            <SectionHeading
-              tag="Brother Highlights"
-              title="Brothers making an impact."
-              description="Stories of Sigma Lambda brothers serving New Orleans and beyond."
-              headingId="brother-highlights-heading"
-              className="mb-14"
-            />
-          </Reveal>
           {highlights.length > 0 ? (
             <Reveal>
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

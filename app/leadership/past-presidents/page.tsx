@@ -23,8 +23,8 @@ export default function PastPresidentsPage() {
             Past Presidents
           </h1>
           <p className="mt-6 max-w-[65ch] text-lg leading-relaxed text-text-ondark/78">
-            A century of leadership — every brother who has served as president of Sigma
-            Lambda Chapter since its 1925 charter.
+            A century of leadership every brother who has served as president of Sigma
+            Lambda Chapter of Alpha Phi Alpha Fraternity, Incorporate since its 1925 charter.
           </p>
         </div>
       </section>
@@ -32,7 +32,7 @@ export default function PastPresidentsPage() {
       <section className="py-18 lg:py-27">
         <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
           <Reveal>
-            <SectionHeading tag="Past Chapter Presidents" title="A Century of Leadership" className="mb-10" />
+            <SectionHeading tag="PAST CHAPTER PRESIDENTS" title="A Century of Leadership" className="mb-10" />
           </Reveal>
           <Reveal>
             <ul className="columns-2 gap-x-10 sm:columns-3 lg:columns-4">
