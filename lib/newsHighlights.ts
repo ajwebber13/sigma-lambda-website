@@ -9,6 +9,8 @@ export type NewsHighlight = {
   preview: string;
   body: string;
   photo_url: string;
+  photo_width: number | null;
+  photo_height: number | null;
   label: string;
   photo_fit: "cover" | "contain";
   source_url: string | null;

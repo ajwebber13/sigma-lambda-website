@@ -49,6 +49,14 @@ export default async function HighlightPage({ params }: Props) {
   if (!highlight) notFound();
 
   const fit = highlightPhotoFit(highlight);
+  // 'contain' photos with known dimensions get a box sized to their real aspect
+  // ratio, so landscape flyers/group shots fill the frame instead of floating in
+  // a tall portrait box. 'cover' photos (and 'contain' rows with no dimensions on
+  // file) keep the fixed 4:5 box, since 'cover' always crops to fill it anyway.
+  const hasPhotoAspect = highlight.photo_fit === "contain" && highlight.photo_width && highlight.photo_height;
+  const photoBoxStyle = hasPhotoAspect
+    ? { aspectRatio: `${highlight.photo_width} / ${highlight.photo_height}` }
+    : undefined;
   // Only http(s) links are rendered as the source button.
   const sourceUrl = highlight.source_url && /^https?:\/\//i.test(highlight.source_url) ? highlight.source_url : null;
 
@@ -79,7 +87,8 @@ export default async function HighlightPage({ params }: Props) {
               </p>
             </div>
             <div
-              className={`relative aspect-[4/5] w-full max-w-[380px] overflow-hidden rounded-lg border border-line ${fit.frame}`}
+              className={`relative w-full max-w-[380px] overflow-hidden rounded-lg border border-line ${fit.frame} ${hasPhotoAspect ? "" : "aspect-[4/5]"}`}
+              style={photoBoxStyle}
             >
               <Image
                 src={highlight.photo_url}
