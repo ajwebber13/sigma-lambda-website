@@ -18,7 +18,7 @@ export default function GalleryPage() {
       <section className="bg-ink pt-[150px] pb-16 text-text-ondark">
         <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
           <span className="mb-3.5 block text-[13px] font-semibold tracking-[0.03em] text-gold-bright">
-            Gallery
+            GALLERY
           </span>
           <h1 className="max-w-[820px] text-[36px] leading-[1.08] font-semibold sm:text-[52px]">
             Photos from the chapter.

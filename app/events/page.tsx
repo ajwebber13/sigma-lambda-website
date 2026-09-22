@@ -17,14 +17,14 @@ export default function EventsPage() {
   return (
     <>
       <section className="bg-ink pt-[150px] pb-16 text-text-ondark">
-        <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
+        <div className="mx-auto max-w-[1180px] px-5 text-center sm:px-8">
           <span className="mb-3.5 block text-[13px] font-semibold tracking-[0.03em] text-gold-bright">
-            Events &amp; calendar
+            EVENTS &amp; CALENDAR
           </span>
-          <h1 className="max-w-[820px] text-[36px] leading-[1.08] font-semibold sm:text-[52px]">
+          <h1 className="mx-auto max-w-[820px] text-[36px] leading-[1.08] font-semibold sm:text-[52px]">
             Cordiality exists among all who abide within…
           </h1>
-          <p className="mt-6 max-w-[65ch] text-lg leading-relaxed text-text-ondark/78">
+          <p className="mx-auto mt-6 max-w-[65ch] text-lg leading-relaxed text-text-ondark/78">
             The Brothers of Sigma Lambda Chapter invites you to attend our upcoming programs.
             Below you will find a description of each event and a chance to register. We look
             forward to seeing you soon!
@@ -35,17 +35,7 @@ export default function EventsPage() {
       <section className="bg-paper py-14">
         <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
           <Reveal>
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
-              <Link
-                href="/events/founders-day"
-                className="rounded-lg border border-line bg-ink px-6.5 py-7 text-text-ondark transition-transform hover:-translate-y-0.5"
-              >
-                <span className="text-[12.5px] font-semibold tracking-[0.06em] text-gold-bright">
-                  Dec 4, 2026
-                </span>
-                <h2 className="mt-2.5 text-lg font-semibold">Founder&apos;s Day</h2>
-                <p className="mt-1.5 text-sm text-text-ondark/60">120 Years of Brotherhood →</p>
-              </Link>
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
               <Link
                 href="/events/scholarship-gala"
                 className="rounded-lg border border-line bg-ink px-6.5 py-7 text-text-ondark transition-transform hover:-translate-y-0.5"
@@ -76,7 +66,7 @@ export default function EventsPage() {
           <Reveal>
             <SectionHeading
               tag="Photo albums"
-              title="Relive the last event."
+              title="Relive the last event(s)."
               description="Browse photos by event — click an album to open the full gallery."
               className="mb-10"
             />
@@ -129,22 +119,6 @@ export default function EventsPage() {
         </div>
       </section>
 
-      <section className="bg-paper py-18 lg:py-27">
-        <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
-          <Reveal>
-            <Link
-              href="/events/rsvp"
-              className="mx-auto flex max-w-[760px] flex-wrap items-center justify-between gap-5 rounded-lg border border-line bg-ink px-7 py-7 text-text-ondark transition-transform hover:-translate-y-0.5"
-            >
-              <div>
-                <span className="text-[12.5px] font-semibold tracking-[0.06em] text-gold-bright">RSVP</span>
-                <h2 className="mt-2.5 text-lg font-semibold">Events you can RSVP to</h2>
-                <p className="mt-1.5 text-sm text-text-ondark/60">See dates and reserve your spot →</p>
-              </div>
-            </Link>
-          </Reveal>
-        </div>
-      </section>
     </>
   );
 }

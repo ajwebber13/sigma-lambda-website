@@ -18,15 +18,11 @@ export default function NotableBrothersPage() {
       <section className="bg-ink pt-[150px] pb-16 text-text-ondark">
         <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
           <span className="mb-3.5 block text-[13px] font-semibold tracking-[0.03em] text-gold-bright">
-            About the Fraternity
+            ABOUT THE FRATERNITY
           </span>
           <h1 className="max-w-[820px] text-[36px] leading-[1.08] font-semibold sm:text-[52px]">
             Notable Brothers
           </h1>
-          <p className="mt-6 max-w-[65ch] text-lg leading-relaxed text-text-ondark/78">
-            A legacy carried by the men who came before — a few of the brothers whose work shaped
-            New Orleans, and the chapter that helped form them.
-          </p>
         </div>
       </section>
 

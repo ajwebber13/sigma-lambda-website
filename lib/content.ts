@@ -46,14 +46,6 @@ export const legacyTimeline: LegacyEntry[] = [
     description: "Longest Serving President of Xavier University of Louisiana.",
     photo: "Norman-Francis.jpeg",
   },
-  {
-    name: "Omar Mason, Esq.",
-    description: "Judge, Civil District Court of Louisiana.",
-  },
-  {
-    name: "Ed Murray, Esq.",
-    description: "Louisiana House of Representatives, District 97.",
-  },
 ];
 
 export type Officer = {
@@ -270,7 +262,6 @@ export const navLinks: NavLink[] = [
     label: "Events",
     children: [
       { href: "/events", label: "Events" },
-      { href: "/events/founders-day", label: "Founder's Day" },
       { href: "/events/scholarship-gala", label: "Scholarship Gala" },
       { href: "/events/gallery", label: "Gallery" },
       { href: "/events/rsvp", label: "RSVP" },

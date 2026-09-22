@@ -16,12 +16,14 @@ export default function ProgramsPage() {
     <>
       <section className="bg-ink pt-[150px] pb-16 text-text-ondark">
         <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
-          <span className="mb-3.5 block text-[13px] font-semibold tracking-[0.03em] text-gold-bright">
-            Service &amp; Programs
-          </span>
           <h1 className="max-w-[820px] text-[36px] leading-[1.08] font-semibold sm:text-[52px]">
-            Mentoring, education and outreach — organized clearly.
+            SERVICE &amp; PROGRAMS
           </h1>
+          <p className="mx-auto mt-6 max-w-[70ch] text-center text-lg leading-relaxed text-text-ondark/78">
+            Our Fraternity&apos;s motto of &quot;First of All, Servants of All, We Shall Transcend All&quot;
+            embodies our history as the first intercollegiate Fraternity founded by African American men;
+            our mission to provide service to our community; and our charge to our membership.
+          </p>
           <p className="mt-6 max-w-[65ch] text-lg leading-relaxed text-text-ondark/78">{programsIntro}</p>
         </div>
       </section>

@@ -17,16 +17,9 @@ export default function SevenJewelsPage() {
     <>
       <section className="bg-ink pt-[150px] pb-16 text-text-ondark">
         <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
-          <span className="mb-3.5 block text-[13px] font-semibold tracking-[0.03em] text-gold-bright">
-            About the fraternity
-          </span>
           <h1 className="max-w-[820px] text-[36px] leading-[1.08] font-semibold sm:text-[52px]">
-            The Seven Founding Jewels
+            THE SEVEN JEWELS
           </h1>
-          <p className="mt-6 max-w-[65ch] text-lg leading-relaxed text-text-ondark/78">
-            The seven college men who founded Alpha Phi Alpha Fraternity, Inc. at Cornell University
-            in 1906.
-          </p>
         </div>
       </section>
 
@@ -36,6 +29,7 @@ export default function SevenJewelsPage() {
             <SectionHeading
               tag="The Seven Jewels"
               title="The Seven Founding Jewels of Alpha Phi Alpha."
+              description="The seven visionary founders, known as the “Jewels” of the fraternity, are Henry Arthur Callis, Charles Henry Chapman, Eugene Kinckle Jones, George Biddle Kelley, Nathaniel Allison Murray, Robert Harold Ogle, and Vertner Woodson Tandy."
               className="mb-14"
             />
           </Reveal>

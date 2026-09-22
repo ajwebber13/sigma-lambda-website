@@ -18,10 +18,10 @@ export default function AboutPage() {
       <section className="bg-ink pt-[150px] pb-16 text-text-ondark">
         <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
           <span className="mb-3.5 block text-[13px] font-semibold tracking-[0.03em] text-gold-bright">
-            About the Fraternity
+            ABOUT THE FRATERNITY
           </span>
           <h1 className="max-w-[820px] text-[36px] leading-[1.08] font-semibold sm:text-[52px]">
-            Alpha Phi Alpha History
+            The History of Alpha Phi Alpha Fraternity, Incorporated
           </h1>
         </div>
       </section>
@@ -43,7 +43,7 @@ export default function AboutPage() {
           </Reveal>
           <Reveal>
             <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1fr)_400px]">
-              <div className="max-w-[75ch] space-y-5 text-[16.5px] leading-relaxed text-text-onlight/78">
+              <div className="space-y-5 text-[16.5px] leading-relaxed text-text-onlight/78">
                 {foundingHistory.map((paragraph, i) => (
                   <p key={i}>{paragraph}</p>
                 ))}
@@ -77,8 +77,9 @@ export default function AboutPage() {
         <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
           <Reveal>
             <SectionHeading
-              tag="Mission"
+              tag="MISSION"
               title="Alpha Phi Alpha Fraternity, Inc. develops leaders, promotes brotherhood and academic excellence, while providing service and advocacy for our communities."
+              className="mx-auto text-center"
             />
           </Reveal>
         </div>
