@@ -89,11 +89,11 @@ export const gallerySections: GallerySection[] = [
     })),
   },
   {
-    title: "MLK Parade 2026",
+    title: "MLK Day of Service 2026",
     slug: "mlk-parade-2026",
     images: mlkParade26Files.map((file) => ({
-      src: `/images/gallery/mlk-parade26/${file}`,
-      alt: "MLK Parade 2026",
+      src: `/images/gallery/mlk-dayofservice26/${file}`,
+      alt: "MLK Day of Service 2026",
     })),
   },
   {

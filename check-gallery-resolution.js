@@ -19,7 +19,7 @@ const MIN_LONG_EDGE = 1024; // matches the working Gala 2025 photos (1024x683)
 const FOLDERS = [
   "public/images/gallery/gala-2025-centennial",
   "public/images/gallery/centennial-luncheon",
-  "public/images/gallery/mlk-parade26",
+  "public/images/gallery/mlk-dayofservice26",
   "public/images/gallery/cityofnola-honors-sigmalambda-centennial",
   "public/images/gallery/softball-tourney26",
 ];
