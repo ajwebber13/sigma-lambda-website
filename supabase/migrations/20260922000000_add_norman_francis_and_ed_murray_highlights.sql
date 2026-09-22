@@ -1,0 +1,32 @@
+-- Notice of Transition: Bro. Dr. Norman C. Francis, and a Congratulations
+-- post for Bro. Ed Murray's election. Both source photos are designed flyer
+-- graphics (portrait + text/logo overlay), so photo_fit is 'contain' to keep
+-- the full graphic visible rather than cropping it to a 4:5 frame.
+insert into public.news_highlights
+  (slug, brother_name, label, title, preview, body, photo_url, photo_fit, published, published_at)
+values
+  (
+    'notice-of-transition-norman-c-francis',
+    'Bro. Dr. Norman C. Francis',
+    'NOTICE OF TRANSITION',
+    'Notice of Transition: Bro. Dr. Norman C. Francis',
+    'Dr. Norman C. Francis ''52, President Emeritus of Xavier University of Louisiana, longtime civil rights leader, and Sigma Lambda Chapter Brother (Fall 1967), transitioned to the Omega Chapter on February 18, 2026.',
+    E'Xavier University of Louisiana mourns the passing of esteemed alumnus Dr. Norman C. Francis ''52, President Emeritus and one of the most consequential leaders in the history of American higher education.\n\nAssuming the presidency during a period of profound social change, on the day of Martin Luther King, Jr.''s assassination, Francis, who was Xavier''s first lay president, led Xavier with unwavering principle, intellectual rigor, and moral clarity. Under his leadership, Xavier strengthened its Catholic and historically Black identity while dramatically expanding its national reputation, particularly in the sciences and health professions. His 47-year presidency stands among the longest in U.S. higher education history and reshaped not only the University, but the city of New Orleans and the nation it serves. Today, Xavier is recognized as a leading producer of Black graduates who go on to earn medical degrees, a legacy directly tied to Dr. Francis''s belief that education must serve both opportunity and justice.\n\n"President Emeritus Norman C. Francis dedicated his astounding effort to the flourishing of the human community, to full freedom of the oppressed, especially the descendants of the enslaved – it is the love to which we are called as disciples of Christ. The nation is better and richer for his having lived among us," said University President Reynold Verret.\n\nBeyond his service to Xavier as an administrator, Francis was a highly accomplished alumnus whose work consistently provided a much-needed form of access for his beloved community. Prior to his service as Xavier''s President and following his historic success as the first Black law school graduate of Loyola University New Orleans College of Law in 1955, Francis served as an attorney litigating civil rights cases in Louisiana before Brown v. Board of Education. He also served as Xavier''s Dean of Men and was a key player in the Civil Rights movement. He was a major advocate in allowing the Freedom Riders, at the request of senior class president Rudy Lombard ''61, to safely retreat to St. Michael''s Residence Hall following a violent attack on one of their rides.\n\nIn 1972, he co-founded Liberty Bank and Trust Company, one of the oldest and largest Black-owned banks in the United States, to provide financial services to underserved Black communities. Francis was also instrumental in bringing a different type of access to New Orleans. In the early 1960s, he helped to bring an NFL franchise to the city as an early investor of the New Orleans Saints and in the development of the Superdome.\n\nNationally, Francis was hailed as a towering figure in philanthropy and education. He served as chair of the United Negro College Fund and held leadership roles on numerous corporate, foundation, and nonprofit boards. He was a leading voice among Catholic higher education presidents, standing alongside then-University of Notre Dame President Fr. Theodore Hesburgh at the landmark Land o''Lakes convening of Catholic college and university leaders, helping to shape the conversation on the implications of the papal encyclical Ex Corde Ecclesiae and the role of Catholic identity in American higher education. Across these spaces, he was widely respected for his judgment, humility, and ability to bring people together around shared purpose.\n\nIndeed, his impact extended far beyond campus. A trusted civic leader, he played a pivotal role in the rebuilding of New Orleans following Hurricane Katrina, offering steady guidance at a moment when the city''s future felt uncertain. His counsel was sought by local, state, and national leaders, and his presence helped anchor New Orleans'' recovery with integrity, collaboration, and hope. That work is noted as a key factor in his receiving the Presidential Medal of Freedom in 2006, presented by President George W. Bush.\n\nDespite his many honors and accolades, those closest to Francis remember him most for his character – his quiet strength, deep faith, disciplined leadership style, and steadfast belief in students. He led without spectacle, guided by the conviction that excellence and ethics are inseparable.\n\nDr. Norman C. Francis, son of Xavier, leaves a legacy inseparable from the University. Every Xavier graduate who carries forward the mission of service, leadership, and academic excellence does so in his shadow and in his honor. His life''s work endures, in this institution, city, and in the countless lives changed because he believed deeply in the transformative power of education.\n\nFuneral Schedule\nMonday, March 2 — Xavier University Convocation Center, 7910 Stroelitz St., New Orleans\n• Lying in State and Viewing: 9:00 a.m. – 3:30 p.m.\n• Visitation: 4:00 p.m. – 5:00 p.m.\n• Program: 5:00 p.m. – 7:00 p.m.\nTuesday, March 3 — St. Louis Cathedral, 615 Pere Antoine Alley, New Orleans\n• Visitation: 8:00 a.m. – 9:30 a.m.\n• Remembrance: 9:30 a.m.\n• Funeral Mass: 10:00 a.m.',
+    '/images/news/637518252_1304492958380497_8429938859604234767_n.jpg',
+    'contain',
+    true,
+    '2026-02-18 12:00:00+00'
+  ),
+  (
+    'ed-murray-elected-house-district-97',
+    'Bro. Ed Murray',
+    'CONGRATULATIONS',
+    'Bro. Ed Murray Elected House District 97 Representative',
+    'Congratulations to Bro. Ed Murray on being elected House District 97 Representative!',
+    E'Congratulations Bro. Murray on being elected House District 97 representative! We wish you continued success as you lead and advocate on behalf of our community.',
+    '/images/news/631559411_1296835625812897_6891552850083111461_n.jpg',
+    'contain',
+    true,
+    '2026-09-22 12:00:00+00'
+  )
+on conflict (slug) do nothing;
