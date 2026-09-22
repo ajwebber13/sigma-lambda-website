@@ -129,6 +129,7 @@ export type Program = {
   name: string;
   description: string;
   category: "national" | "chapter";
+  href?: string;
 };
 
 export const programsIntro =
@@ -170,12 +171,19 @@ export const programs: Program[] = [
     description:
       "A 501(c)(3) organization that raises and distributes scholarship funds, primarily to young men furthering their education. Each year, the foundation and chapter host a scholarship gala during Founders' Week as the marquee fundraising event.",
     category: "chapter",
+    href: "/programs/scholarship-foundation",
   },
   {
     name: "Social Justice",
     description:
       "Focuses on race and equality, voter rights, and mass incarceration. Brothers have led voter mobilization efforts and public forums on advocacy and civic action in New Orleans.",
     category: "chapter",
+  },
+  {
+    name: "Alpha Plaza Foundation",
+    description: "A Sigma Lambda Chapter initiative. More details forthcoming.",
+    category: "chapter",
+    href: "/programs/alpha-plaza-foundation",
   },
 ];
 

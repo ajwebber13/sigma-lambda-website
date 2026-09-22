@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import type { Program } from "@/lib/content";
 import GallerySection from "@/components/GallerySection";
 import { programGalleries } from "@/lib/gallery";
@@ -53,7 +54,7 @@ export default function ProgramsGrid({ programs }: { programs: Program[] }) {
           return (
             <div
               key={program.name}
-              className={`bg-ink transition-colors hover:bg-[#1c1610] ${
+              className={`relative bg-ink transition-colors hover:bg-[#1c1610] ${
                 isNational ? "px-8 py-10" : "px-6.5 py-7.5"
               }`}
             >
@@ -72,6 +73,15 @@ export default function ProgramsGrid({ programs }: { programs: Program[] }) {
               >
                 {program.description}
               </p>
+              {program.href && (
+                <Link
+                  href={program.href}
+                  className="mt-3.5 inline-block text-[13px] font-bold tracking-[0.03em] text-gold-bright uppercase outline-hidden after:absolute after:inset-0 after:content-['']"
+                >
+                  Learn more <span aria-hidden="true">→</span>
+                  <span className="sr-only">: {program.name}</span>
+                </Link>
+              )}
             </div>
           );
         })}
