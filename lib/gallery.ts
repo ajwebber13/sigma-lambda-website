@@ -67,9 +67,19 @@ const mlkParade26Files = [
   "619256309_10163147832786939_5243448022063723273_n.jpg",
 ];
 
+const softballTourney26Files = ["3.jpeg", "4.jpeg", "5.jpeg", "6.jpeg", "original.jpeg"];
+
 // Add a folder per event under public/images/gallery/<event-slug>/ and list
 // the files here — each section renders as its own clickable slideshow.
 export const gallerySections: GallerySection[] = [
+  {
+    title: "2026 Fraternity Softball Tournament — Championship Win",
+    slug: "softball-tourney26",
+    images: softballTourney26Files.map((file) => ({
+      src: `/images/gallery/softball-tourney26/${file}`,
+      alt: "2026 Fraternity Softball Tournament — Championship Win",
+    })),
+  },
   {
     title: "3rd Annual Brotherhood Water Outing",
     slug: "water-outing-2026",

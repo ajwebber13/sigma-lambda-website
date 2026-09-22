@@ -21,6 +21,7 @@ const FOLDERS = [
   "public/images/gallery/centennial-luncheon",
   "public/images/gallery/mlk-parade26",
   "public/images/gallery/cityofnola-honors-sigmalambda-centennial",
+  "public/images/gallery/softball-tourney26",
 ];
 
 function getJpegDimensions(buffer) {
