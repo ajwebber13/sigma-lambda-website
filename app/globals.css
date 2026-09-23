@@ -173,3 +173,73 @@ h4 {
     display: none;
   }
 }
+
+/* ---------- FullCalendar — brand theme (month grid, public Events + portal) ---------- */
+.sl-calendar .fc {
+  --fc-border-color: var(--line);
+  --fc-neutral-bg-color: rgba(246, 242, 231, 0.04);
+  --fc-page-bg-color: transparent;
+  --fc-today-bg-color: rgba(201, 162, 39, 0.1);
+  --fc-event-bg-color: rgba(201, 162, 39, 0.16);
+  --fc-event-border-color: rgba(201, 162, 39, 0.4);
+  --fc-event-text-color: var(--gold-bright);
+  --fc-button-bg-color: transparent;
+  --fc-button-border-color: var(--line);
+  --fc-button-hover-bg-color: rgba(201, 162, 39, 0.12);
+  --fc-button-hover-border-color: var(--gold-deep);
+  --fc-button-active-bg-color: var(--gold);
+  --fc-button-active-border-color: var(--gold);
+  --fc-small-font-size: 12px;
+  font-family: var(--font-sans);
+  color: var(--text-ondark);
+}
+
+.sl-calendar .fc .fc-toolbar-title {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.sl-calendar .fc .fc-button {
+  text-transform: capitalize;
+  font-weight: 600;
+  box-shadow: none !important;
+}
+
+.sl-calendar .fc .fc-button-primary:not(:disabled).fc-button-active,
+.sl-calendar .fc .fc-button-primary:not(:disabled):active {
+  color: var(--ink);
+}
+
+.sl-calendar .fc .fc-daygrid-day-number {
+  color: rgba(243, 238, 225, 0.65);
+  font-size: 13px;
+}
+
+.sl-calendar .fc .fc-day-today .fc-daygrid-day-number {
+  color: var(--gold-bright);
+  font-weight: 700;
+}
+
+.sl-calendar .fc .fc-col-header-cell-cushion {
+  color: rgba(243, 238, 225, 0.5);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 8px 4px;
+}
+
+.sl-calendar .fc .fc-daygrid-event {
+  border-radius: 4px;
+  padding: 1px 4px;
+  cursor: pointer;
+}
+
+.sl-calendar .fc .fc-daygrid-more-link {
+  color: var(--gold-bright);
+}
+
+.sl-calendar .fc a {
+  text-decoration: none;
+}

@@ -1,3 +1,4 @@
+import CalendarView from "@/components/CalendarView";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import SignOutButton from "@/components/SignOutButton";
@@ -5,8 +6,17 @@ import PortalDuesCard from "@/components/PortalDuesCard";
 import PortalEventsCard from "@/components/PortalEventsCard";
 import PortalMerchCard from "@/components/PortalMerchCard";
 import { events } from "@/lib/content";
+import type { CalendarEvent } from "@/lib/calendarEvents";
 
-export default function PortalDashboard({ email, name }: { email: string; name?: string | null }) {
+export default function PortalDashboard({
+  email,
+  name,
+  calendarEvents,
+}: {
+  email: string;
+  name?: string | null;
+  calendarEvents: CalendarEvent[];
+}) {
   const nextEvent = events[0];
 
   return (
@@ -67,6 +77,12 @@ export default function PortalDashboard({ email, name }: { email: string; name?:
           <Reveal>
             <div className="mt-6">
               <PortalMerchCard />
+            </div>
+          </Reveal>
+          <Reveal>
+            <div className="mt-10">
+              <SectionHeading tag="Calendar" title="Full chapter calendar." className="mb-6" />
+              <CalendarView events={calendarEvents} />
             </div>
           </Reveal>
           <p className="mt-8 text-center text-[12.5px] text-text-onlight/45">

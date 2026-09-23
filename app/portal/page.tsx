@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import PortalDashboard from "@/components/PortalDashboard";
 import { buildMetadata } from "@/lib/seo";
+import { getCalendarEvents } from "@/lib/calendarEvents";
 import { createClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = buildMetadata({
@@ -23,6 +24,7 @@ export default async function PortalPage() {
   }
 
   const fullName = user.user_metadata?.full_name ?? user.user_metadata?.name ?? null;
+  const calendarEvents = await getCalendarEvents();
 
-  return <PortalDashboard email={user.email ?? ""} name={fullName} />;
+  return <PortalDashboard email={user.email ?? ""} name={fullName} calendarEvents={calendarEvents} />;
 }

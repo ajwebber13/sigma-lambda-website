@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import CalendarView from "@/components/CalendarView";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import { buildMetadata } from "@/lib/seo";
+import { getCalendarEvents } from "@/lib/calendarEvents";
 import { gallerySections } from "@/lib/gallery";
 
 export const metadata: Metadata = buildMetadata({
@@ -13,7 +15,11 @@ export const metadata: Metadata = buildMetadata({
   path: "/events",
 });
 
-export default function EventsPage() {
+export const revalidate = 3600;
+
+export default async function EventsPage() {
+  const calendarEvents = await getCalendarEvents();
+
   return (
     <>
       <section className="bg-ink pt-[150px] pb-16 text-text-ondark">
@@ -29,6 +35,22 @@ export default function EventsPage() {
             Below you will find a description of each event and a chance to register. We look
             forward to seeing you soon!
           </p>
+        </div>
+      </section>
+
+      <section className="py-18 lg:py-27">
+        <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
+          <Reveal>
+            <SectionHeading
+              tag="Calendar"
+              title="What's next for the chapter."
+              description="Galas, meetings and service days — tap a date to see the details."
+              className="mb-10"
+            />
+          </Reveal>
+          <Reveal>
+            <CalendarView events={calendarEvents} />
+          </Reveal>
         </div>
       </section>
 
