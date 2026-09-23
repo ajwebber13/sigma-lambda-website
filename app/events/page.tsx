@@ -32,35 +32,6 @@ export default function EventsPage() {
         </div>
       </section>
 
-      <section className="bg-paper py-14">
-        <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
-          <Reveal>
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-              <Link
-                href="/events/scholarship-gala"
-                className="rounded-lg border border-line bg-ink px-6.5 py-7 text-text-ondark transition-transform hover:-translate-y-0.5"
-              >
-                <span className="text-[12.5px] font-semibold tracking-[0.06em] text-gold-bright">
-                  Founders&apos; Week
-                </span>
-                <h2 className="mt-2.5 text-lg font-semibold">Scholarship Gala</h2>
-                <p className="mt-1.5 text-sm text-text-ondark/60">The chapter&apos;s marquee fundraiser →</p>
-              </Link>
-              <Link
-                href="/events/gallery"
-                className="rounded-lg border border-line bg-ink px-6.5 py-7 text-text-ondark transition-transform hover:-translate-y-0.5"
-              >
-                <span className="text-[12.5px] font-semibold tracking-[0.06em] text-gold-bright">
-                  Photos
-                </span>
-                <h2 className="mt-2.5 text-lg font-semibold">Gallery</h2>
-                <p className="mt-1.5 text-sm text-text-ondark/60">Browse photos by event →</p>
-              </Link>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
       <section className="py-18 lg:py-27">
         <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
           <Reveal>
@@ -90,27 +61,21 @@ export default function EventsPage() {
             </Reveal>
           ) : (
             <Reveal>
-              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+              <div className="grid grid-cols-2 gap-x-4 gap-y-7 sm:grid-cols-3">
                 {gallerySections.map((section) => (
-                  <Link
-                    key={section.slug}
-                    href={`/events/gallery#${section.slug}`}
-                    className="group relative aspect-square overflow-hidden rounded-lg border border-line"
-                  >
-                    <Image
-                      src={section.images[0].src}
-                      alt=""
-                      fill
-                      sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <div
-                      className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/10 to-transparent"
-                      aria-hidden="true"
-                    />
-                    <span className="absolute inset-x-0 bottom-0 p-3 text-[12.5px] font-semibold leading-tight text-text-ondark">
+                  <Link key={section.slug} href={`/events/gallery#${section.slug}`} className="group block">
+                    <div className="relative aspect-square overflow-hidden rounded-lg border border-line">
+                      <Image
+                        src={section.images[0].src}
+                        alt=""
+                        fill
+                        sizes="(min-width: 640px) 33vw, 50vw"
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
+                    <p className="mt-3 text-center text-[14px] leading-tight text-text-onlight/70 italic">
                       {section.title}
-                    </span>
+                    </p>
                   </Link>
                 ))}
               </div>
