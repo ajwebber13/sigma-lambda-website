@@ -264,7 +264,15 @@ export const navLinks: NavLink[] = [
       { href: "/leadership/past-presidents", label: "Past Presidents" },
     ],
   },
-  { href: "/programs", label: "Programs" },
+  {
+    href: "/programs",
+    label: "Programs",
+    children: [
+      { href: "/programs", label: "Programs" },
+      { href: "/programs/alpha-plaza-foundation", label: "Alpha Plaza Foundation" },
+      { href: "/programs/scholarship-foundation", label: "Sigma Lambda Scholarship Foundation" },
+    ],
+  },
   {
     href: "/events",
     label: "Events",
