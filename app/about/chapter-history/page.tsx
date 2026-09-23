@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import { buildMetadata } from "@/lib/seo";
@@ -50,6 +51,24 @@ export default function ChapterHistoryPage() {
                   <p className="mt-2 text-sm leading-relaxed text-text-ondark/65">{founder.bio}</p>
                 </div>
               ))}
+            </div>
+          </Reveal>
+          <Reveal>
+            <div className="mt-10 flex flex-col items-start gap-3 rounded-lg border border-line bg-ink px-6 py-7 text-text-ondark sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <h3 className="font-serif text-lg font-semibold sm:text-xl">
+                  Help preserve the chapter&apos;s history.
+                </h3>
+                <p className="mt-1.5 max-w-[55ch] text-sm leading-relaxed text-text-ondark/65">
+                  Brothers can submit information, stories, and photos to the chapter&apos;s historical record.
+                </p>
+              </div>
+              <Link
+                href="/about/history-submission"
+                className="flex-shrink-0 rounded-sm bg-gold px-6 py-3 text-[13.5px] font-bold whitespace-nowrap text-ink shadow-[0_18px_40px_-18px_rgba(140,109,27,0.45)] transition-transform hover:-translate-y-0.5"
+              >
+                Submit your history
+              </Link>
             </div>
           </Reveal>
         </div>

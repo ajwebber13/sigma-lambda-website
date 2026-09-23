@@ -263,6 +263,7 @@ export const navLinks: NavLink[] = [
       { href: "/about/chapter-history", label: "Chapter History" },
       { href: "/about/notable-brothers", label: "Notable Brothers" },
       { href: "/about/college-chapters", label: "College Chapters" },
+      { href: "/about/history-submission", label: "History Submission" },
     ],
   },
   {
