@@ -32,7 +32,13 @@ export default function LeadershipPage() {
       <section className="py-18 lg:py-27">
         <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
           <Reveal>
-            <SectionHeading tag="Governance" title="Executive Leadership 2026-2027" className="mb-14" />
+            <SectionHeading
+              tag="Governance"
+              title="Executive Leadership 2026-2027"
+              className="mb-14"
+              center
+              titleClassName="text-[28px] sm:text-[32px] lg:whitespace-nowrap lg:text-[38px]"
+            />
           </Reveal>
           <Reveal>
             <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
