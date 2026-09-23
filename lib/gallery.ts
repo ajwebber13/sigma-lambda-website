@@ -80,9 +80,24 @@ const mlkParade26Files = [
 
 const softballTourney26Files = ["3.jpeg", "4.jpeg", "5.jpeg", "6.jpeg", "original.jpeg"];
 
+const teamer40AnniversaryFiles = [
+  "532143575_1149125110583950_3265200259486974261_n.jpg",
+  "532301688_1149125107250617_2167231272737804471_n.jpg",
+  "532336664_1149125053917289_2746086342237821669_n.jpg",
+  "533107734_1149125057250622_7271500129756831065_n.jpg",
+];
+
 // Add a folder per event under public/images/gallery/<event-slug>/ and list
 // the files here — each section renders as its own clickable slideshow.
 export const gallerySections: GallerySection[] = [
+  {
+    title: "Celebrating 27th General President Charles C. Teamer, Sr. — 40th Anniversary",
+    slug: "teamer-40anniversary",
+    images: teamer40AnniversaryFiles.map((file) => ({
+      src: `/images/gallery/teamer-40anniversary/${file}`,
+      alt: "Celebrating 27th General President Charles C. Teamer, Sr. — 40th Anniversary",
+    })),
+  },
   {
     title: "2026 Fraternity Softball Tournament — Championship Win",
     slug: "softball-tourney26",
