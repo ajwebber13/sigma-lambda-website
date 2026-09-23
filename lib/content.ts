@@ -272,6 +272,7 @@ export const navLinks: NavLink[] = [
     label: "Events",
     children: [
       { href: "/events", label: "Events" },
+      { href: "/events/founders-day-celebration", label: "Founders' Day Celebration" },
       { href: "/events/scholarship-gala", label: "Scholarship Gala" },
       { href: "/events/gallery", label: "Gallery" },
       { href: "/events/rsvp", label: "RSVP" },
