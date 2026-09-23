@@ -121,7 +121,9 @@ export default function NotableBrothersGrid({ entries }: { entries: LegacyEntry[
                 {selected.name}
               </h3>
               <div className="mt-4 space-y-3 text-[15px] leading-relaxed text-text-ondark/70">
-                <p>{selected.description}</p>
+                {selected.description.split("\n\n").map((paragraph, i) => (
+                  <p key={i}>{paragraph}</p>
+                ))}
               </div>
             </div>
           </div>
