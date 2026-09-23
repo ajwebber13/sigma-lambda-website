@@ -98,7 +98,7 @@ export const officers: Officer[] = [
     initials: "JJ",
     photo: "jared-jupiter.jpg",
   },
-  { title: "Chaplain", name: "Brother Kendrik Miller", initials: "KM", photo: "kendrik-miller.jpg" },
+  { title: "Chaplain", name: "Brother Kendrick Miller", initials: "KM", photo: "kendrick-miller.jpg" },
   {
     title: "Director of Education",
     name: "Brother Robert Mitchell, Jr.",
