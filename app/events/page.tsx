@@ -65,64 +65,140 @@ export default async function EventsPage() {
             />
           </Reveal>
           <Reveal>
-            <div className="rounded-lg border border-line bg-ink p-6.5 text-text-ondark sm:p-7">
-              <span className="inline-flex items-center gap-1.5 text-[12px] font-semibold tracking-[0.06em] text-gold-bright">
-                HOSTED BY UNCF
-                <svg
-                  width="11"
-                  height="11"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  aria-hidden="true"
-                  className="flex-shrink-0"
+            <div className="grid gap-6 sm:grid-cols-2">
+              <div className="rounded-lg border border-line bg-ink p-6.5 text-text-ondark sm:p-7">
+                <span className="inline-flex items-center gap-1.5 text-[12px] font-semibold tracking-[0.06em] text-gold-bright">
+                  HOSTED BY UNCF
+                  <svg
+                    width="11"
+                    height="11"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                    className="flex-shrink-0"
+                  >
+                    <path
+                      d="M7 17L17 7M17 7H9M17 7V15"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+                <h3 className="mt-2.5 font-serif text-xl font-semibold sm:text-2xl">
+                  39th UNCF Walk for Education
+                </h3>
+                <p className="mt-2 text-[14px] text-text-ondark/65">
+                  Saturday, October 17, 2026 · 7:00 AM – 12:00 PM
+                  <br />
+                  LSU New Orleans Lakefront Campus Field, 6686 Elysian Fields Ave, New Orleans, LA 70122
+                </p>
+                <p className="mt-3 max-w-[65ch] text-[15px] leading-relaxed text-text-ondark/78">
+                  Brothers regularly take part in this HBCU-support 5K walk/run. This is an external
+                  event hosted by UNCF, not a Sigma Lambda program — visit their site for full
+                  details and to register.
+                </p>
+                <a
+                  href="https://uncf.org/events/39th-annual-uncf-walk-for-education-new-orleans"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-flex items-center gap-1.5 text-[13.5px] font-bold text-gold-bright hover:underline"
                 >
-                  <path
-                    d="M7 17L17 7M17 7H9M17 7V15"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-              <h3 className="mt-2.5 font-serif text-xl font-semibold sm:text-2xl">
-                39th UNCF Walk for Education
-              </h3>
-              <p className="mt-2 text-[14px] text-text-ondark/65">
-                Saturday, October 17, 2026 · 7:00 AM – 12:00 PM
-                <br />
-                LSU New Orleans Lakefront Campus Field, 6686 Elysian Fields Ave, New Orleans, LA 70122
-              </p>
-              <p className="mt-3 max-w-[65ch] text-[15px] leading-relaxed text-text-ondark/78">
-                Brothers regularly take part in this HBCU-support 5K walk/run. This is an external
-                event hosted by UNCF, not a Sigma Lambda program — visit their site for full
-                details and to register.
-              </p>
-              <a
-                href="https://uncf.org/events/39th-annual-uncf-walk-for-education-new-orleans"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 inline-flex items-center gap-1.5 text-[13.5px] font-bold text-gold-bright hover:underline"
-              >
-                Learn more &amp; register
-                <svg
-                  width="11"
-                  height="11"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  aria-hidden="true"
-                  className="flex-shrink-0"
+                  Learn more &amp; register
+                  <svg
+                    width="11"
+                    height="11"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                    className="flex-shrink-0"
+                  >
+                    <path
+                      d="M7 17L17 7M17 7H9M17 7V15"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  <span className="sr-only">(opens uncf.org in a new tab)</span>
+                </a>
+              </div>
+
+              <div className="rounded-lg border border-line bg-ink p-6.5 text-text-ondark sm:p-7">
+                <span className="inline-flex items-center gap-1.5 text-[12px] font-semibold tracking-[0.06em] text-gold-bright">
+                  HOSTED BY BAYOU CLASSIC
+                  <svg
+                    width="11"
+                    height="11"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                    className="flex-shrink-0"
+                  >
+                    <path
+                      d="M7 17L17 7M17 7H9M17 7V15"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+                <h3 className="mt-2.5 font-serif text-xl font-semibold sm:text-2xl">
+                  53rd Annual Bayou Classic
+                </h3>
+                <p className="mt-2 text-[14px] text-text-ondark/65">
+                  Thursday–Saturday, November 26–28, 2026
+                  <br />
+                  Caesars Superdome, New Orleans, LA
+                </p>
+                <ul className="mt-3 space-y-1 text-[14px] text-text-ondark/78">
+                  <li>
+                    <span className="font-semibold text-text-ondark">Thursday</span> — Thanksgiving
+                    Day Parade
+                  </li>
+                  <li>
+                    <span className="font-semibold text-text-ondark">Friday</span> — Battle of the
+                    Bands &amp; Greek Show
+                  </li>
+                  <li>
+                    <span className="font-semibold text-text-ondark">Saturday</span> — Southern vs.
+                    Grambling football game, kickoff 1:00 PM
+                  </li>
+                </ul>
+                <p className="mt-3 max-w-[65ch] text-[15px] leading-relaxed text-text-ondark/78">
+                  Brothers regularly attend and support this HBCU tradition. This is an external
+                  event hosted by the Bayou Classic, not a Sigma Lambda program — visit their site
+                  for full details and tickets.
+                </p>
+                <a
+                  href="http://thebayouclassic.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-flex items-center gap-1.5 text-[13.5px] font-bold text-gold-bright hover:underline"
                 >
-                  <path
-                    d="M7 17L17 7M17 7H9M17 7V15"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                <span className="sr-only">(opens uncf.org in a new tab)</span>
-              </a>
+                  Learn more &amp; tickets
+                  <svg
+                    width="11"
+                    height="11"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                    className="flex-shrink-0"
+                  >
+                    <path
+                      d="M7 17L17 7M17 7H9M17 7V15"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  <span className="sr-only">(opens thebayouclassic.com in a new tab)</span>
+                </a>
+              </div>
             </div>
           </Reveal>
         </div>
