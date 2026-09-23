@@ -24,6 +24,7 @@ const FOLDERS = [
   "public/images/gallery/softball-tourney26",
   "public/images/gallery/brotherhood-smoke25",
   "public/images/gallery/teamer-40anniversary",
+  "public/images/gallery/sigma-lambda-foundation-scholarship2025",
 ];
 
 function getJpegDimensions(buffer) {
