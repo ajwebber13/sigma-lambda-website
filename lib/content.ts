@@ -179,12 +179,6 @@ export const programs: Program[] = [
       "Focuses on race and equality, voter rights, and mass incarceration. Brothers have led voter mobilization efforts and public forums on advocacy and civic action in New Orleans.",
     category: "chapter",
   },
-  {
-    name: "Alpha Plaza Foundation",
-    description: "A Sigma Lambda Chapter initiative. More details forthcoming.",
-    category: "chapter",
-    href: "/programs/alpha-plaza-foundation",
-  },
 ];
 
 export type EventItem = {

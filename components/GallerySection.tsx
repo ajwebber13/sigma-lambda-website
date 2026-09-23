@@ -37,27 +37,25 @@ export default function GallerySection({
       )}
 
       {variant === "thumbnail" ? (
-        <button
-          type="button"
-          onClick={() => setOpenIndex(0)}
-          className="group relative aspect-[4/3] w-full overflow-hidden rounded-lg transition-opacity hover:opacity-90"
-          aria-label={`View photos — ${section.title}`}
-        >
-          <Image
-            src={section.images[0].src}
-            alt={section.images[0].alt}
-            fill
-            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
-          />
-          <div
-            className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/10 to-transparent"
-            aria-hidden="true"
-          />
-          <span className="absolute inset-x-0 bottom-0 p-3 text-[13px] font-semibold leading-tight text-text-ondark">
+        <div>
+          <button
+            type="button"
+            onClick={() => setOpenIndex(0)}
+            className="group relative aspect-[4/3] w-full overflow-hidden rounded-lg transition-opacity hover:opacity-90"
+            aria-label={`View photos — ${section.title}`}
+          >
+            <Image
+              src={section.images[0].src}
+              alt={section.images[0].alt}
+              fill
+              sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+          </button>
+          <p className="mt-3 text-center text-[14px] leading-tight text-text-ondark/70 italic">
             {section.title}
-          </span>
-        </button>
+          </p>
+        </div>
       ) : (
         <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-4">
           {section.images.map((image, i) => (
