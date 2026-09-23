@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import OfficerCard from "@/components/OfficerCard";
+import SectionHeading from "@/components/SectionHeading";
 import { buildMetadata } from "@/lib/seo";
 import { officers } from "@/lib/content";
 
@@ -30,6 +31,9 @@ export default function LeadershipPage() {
 
       <section className="py-18 lg:py-27">
         <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
+          <Reveal>
+            <SectionHeading tag="Governance" title="Executive Leadership 2026-2027" className="mb-14" />
+          </Reveal>
           <Reveal>
             <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
               {officers.map((officer) => (
