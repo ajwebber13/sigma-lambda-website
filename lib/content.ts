@@ -240,7 +240,7 @@ export const events: EventItem[] = [
 export type NavLink = {
   href: string;
   label: string;
-  children?: { href: string; label: string }[];
+  children?: { href: string; label: string; external?: boolean }[];
 };
 
 export const navLinks: NavLink[] = [
@@ -281,6 +281,11 @@ export const navLinks: NavLink[] = [
       { href: "/events/scholarship-gala", label: "Scholarship Gala" },
       { href: "/events/gallery", label: "Gallery" },
       { href: "/events/rsvp", label: "RSVP" },
+      {
+        href: "https://uncf.org/events/39th-annual-uncf-walk-for-education-new-orleans",
+        label: "UNCF Walk for Education",
+        external: true,
+      },
     ],
   },
   { href: "/news", label: "News" },

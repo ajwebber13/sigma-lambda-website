@@ -20,7 +20,21 @@ function Chevron({ open }: { open: boolean }) {
   );
 }
 
-function DesktopNavDropdown({ link }: { link: NavLink & { children: { href: string; label: string }[] } }) {
+function ExternalIcon() {
+  return (
+    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="flex-shrink-0">
+      <path
+        d="M7 17L17 7M17 7H9M17 7V15"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function DesktopNavDropdown({ link }: { link: NavLink & { children: NonNullable<NavLink["children"]> } }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -70,16 +84,30 @@ function DesktopNavDropdown({ link }: { link: NavLink & { children: { href: stri
         }`}
       >
         <div className="min-w-[220px] rounded-md border border-line bg-ink p-2 shadow-[0_18px_40px_-18px_rgba(0,0,0,0.6)]">
-          {link.children.map((child) => (
-            <Link
-              key={child.href}
-              href={child.href}
-              onClick={() => setOpen(false)}
-              className="block rounded px-3 py-2 text-[13.5px] text-text-ondark/80 hover:bg-white/5 hover:text-text-ondark"
-            >
-              {child.label}
-            </Link>
-          ))}
+          {link.children.map((child) =>
+            child.external ? (
+              <a
+                key={child.href}
+                href={child.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+                className="flex items-center gap-1.5 rounded px-3 py-2 text-[13.5px] text-text-ondark/80 hover:bg-white/5 hover:text-text-ondark"
+              >
+                {child.label}
+                <ExternalIcon />
+              </a>
+            ) : (
+              <Link
+                key={child.href}
+                href={child.href}
+                onClick={() => setOpen(false)}
+                className="block rounded px-3 py-2 text-[13.5px] text-text-ondark/80 hover:bg-white/5 hover:text-text-ondark"
+              >
+                {child.label}
+              </Link>
+            )
+          )}
         </div>
       </div>
     </div>
@@ -90,7 +118,7 @@ function MobileNavAccordion({
   link,
   onNavigate,
 }: {
-  link: NavLink & { children: { href: string; label: string }[] };
+  link: NavLink & { children: NonNullable<NavLink["children"]> };
   onNavigate: () => void;
 }) {
   const [expanded, setExpanded] = useState(false);
@@ -112,16 +140,30 @@ function MobileNavAccordion({
         }`}
       >
         <div className="flex flex-col gap-1 pb-4 pl-2">
-          {link.children.map((child) => (
-            <Link
-              key={child.href}
-              href={child.href}
-              onClick={onNavigate}
-              className="py-2 font-sans text-base text-text-ondark/75"
-            >
-              {child.label}
-            </Link>
-          ))}
+          {link.children.map((child) =>
+            child.external ? (
+              <a
+                key={child.href}
+                href={child.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={onNavigate}
+                className="flex items-center gap-1.5 py-2 font-sans text-base text-text-ondark/75"
+              >
+                {child.label}
+                <ExternalIcon />
+              </a>
+            ) : (
+              <Link
+                key={child.href}
+                href={child.href}
+                onClick={onNavigate}
+                className="py-2 font-sans text-base text-text-ondark/75"
+              >
+                {child.label}
+              </Link>
+            )
+          )}
         </div>
       </div>
     </div>
@@ -202,7 +244,7 @@ export default function SiteHeader() {
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
           {navLinks.map((link) =>
             link.children ? (
-              <DesktopNavDropdown key={link.href} link={link as NavLink & { children: { href: string; label: string }[] }} />
+              <DesktopNavDropdown key={link.href} link={link as NavLink & { children: NonNullable<NavLink["children"]> }} />
             ) : (
               <Link
                 key={link.href}
@@ -246,7 +288,7 @@ export default function SiteHeader() {
           link.children ? (
             <MobileNavAccordion
               key={`${link.href}-${open}`}
-              link={link as NavLink & { children: { href: string; label: string }[] }}
+              link={link as NavLink & { children: NonNullable<NavLink["children"]> }}
               onNavigate={closeMenu}
             />
           ) : (
