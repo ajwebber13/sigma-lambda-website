@@ -39,7 +39,7 @@ export default function HomePage() {
             </h1>
             <div className="mt-9 flex flex-wrap justify-center gap-4 lg:justify-start">
               <Link
-                href="/about"
+                href="/about/chapter-history"
                 className="rounded-sm bg-gold px-6.5 py-4 text-[14.5px] font-bold text-ink shadow-[0_18px_40px_-18px_rgba(140,109,27,0.45)] transition-transform hover:-translate-y-0.5"
               >
                 Explore the chapter
