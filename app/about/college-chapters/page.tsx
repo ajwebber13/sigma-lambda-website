@@ -66,6 +66,16 @@ export default function CollegeChaptersPage() {
                       @{chapter.instagramHandle} →
                     </a>
                   )}
+                  {chapter.facebookHandle && (
+                    <a
+                      href={`https://www.facebook.com/${chapter.facebookHandle}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3.5 inline-block text-[13px] font-bold text-gold-bright hover:underline"
+                    >
+                      Facebook →
+                    </a>
+                  )}
                 </div>
               ))}
             </div>

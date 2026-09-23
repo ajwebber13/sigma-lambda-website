@@ -4,6 +4,7 @@ export type CollegeChapter = {
   blurb: string;
   logo: string;
   instagramHandle?: string;
+  facebookHandle?: string;
 };
 
 export const collegeChapters: CollegeChapter[] = [
@@ -20,6 +21,7 @@ export const collegeChapters: CollegeChapter[] = [
     blurb:
       "64th House of Alpha Phi Alpha Fraternity, Inc. Chartered on the campus of Dillard University in New Orleans in 1938.",
     logo: "betaphilogo.jpg",
+    instagramHandle: "betaphi1938",
   },
   {
     name: "Epsilon Upsilon Chapter",
@@ -34,6 +36,7 @@ export const collegeChapters: CollegeChapter[] = [
     blurb:
       "Chartered 1973, on the campus then known as Louisiana State University in New Orleans (LSUNO). The school was renamed University of New Orleans in 1974, then reverted to LSU New Orleans in July 2026.",
     logo: "thetaphilogo.jpg",
+    facebookHandle: "GreaterThetaPhi",
   },
   {
     name: "Rho Epsilon Chapter",
