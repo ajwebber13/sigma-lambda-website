@@ -12,10 +12,12 @@ export default function PortalDashboard({
   email,
   name,
   calendarEvents,
+  isAdmin,
 }: {
   email: string;
   name?: string | null;
   calendarEvents: CalendarEvent[];
+  isAdmin?: boolean;
 }) {
   const nextEvent = events[0];
 
@@ -82,7 +84,7 @@ export default function PortalDashboard({
           <Reveal>
             <div className="mt-10">
               <SectionHeading tag="Calendar" title="Full chapter calendar." className="mb-6" />
-              <CalendarView events={calendarEvents} />
+              <CalendarView events={calendarEvents} isAdmin={isAdmin} />
             </div>
           </Reveal>
           <p className="mt-8 text-center text-[12.5px] text-text-onlight/45">

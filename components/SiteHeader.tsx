@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { navLinks, type NavLink } from "@/lib/content";
+import { createClient } from "@/lib/supabase/client";
 
 function Chevron({ open }: { open: boolean }) {
   return (
@@ -173,12 +174,21 @@ function MobileNavAccordion({
 export default function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const firstMenuLinkRef = useRef<HTMLAnchorElement>(null);
 
   function closeMenu() {
     setOpen(false);
   }
+
+  // Visibility only — RLS on calendar_events is what actually enforces this.
+  useEffect(() => {
+    const supabase = createClient();
+    supabase.rpc("is_admin").then(({ data }) => {
+      if (data) setIsAdmin(true);
+    });
+  }, []);
 
   useEffect(() => {
     function onScroll() {
@@ -256,6 +266,14 @@ export default function SiteHeader() {
               </Link>
             )
           )}
+          {isAdmin && (
+            <Link
+              href="/events"
+              className="rounded-sm border border-gold-bright/50 px-3 py-1 text-[12px] font-bold tracking-[0.04em] text-gold-bright"
+            >
+              Admin
+            </Link>
+          )}
           <Link
             href="/portal"
             className="rounded-sm bg-gold px-5 py-2.5 text-[13.5px] font-bold tracking-[0.02em] text-ink shadow-[0_18px_40px_-18px_rgba(140,109,27,0.45)] transition-transform hover:-translate-y-px"
@@ -310,6 +328,15 @@ export default function SiteHeader() {
         >
           Member Portal
         </Link>
+        {isAdmin && (
+          <Link
+            href="/events"
+            onClick={closeMenu}
+            className="py-3.5 font-serif text-2xl text-gold-bright"
+          >
+            Admin
+          </Link>
+        )}
       </div>
     </header>
   );

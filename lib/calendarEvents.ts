@@ -11,13 +11,17 @@ export type CalendarEvent = {
   link: string | null;
 };
 
+export type CalendarEventInput = Omit<CalendarEvent, "id">;
+
 // Postgres 42P01 / PostgREST PGRST205: the table has not been migrated yet.
 function isMissingTable(error: { code?: string }) {
   return error.code === "42P01" || error.code === "PGRST205";
 }
 
-// Read-only everywhere it's used (public Events page, member portal) — there is
-// no add/edit/delete UI; Drew inserts rows from the Supabase SQL Editor.
+// This fetch itself stays read-only, but admins can now create/edit/delete
+// events from the site (see CalendarView + EventForm) — writes go straight to
+// Supabase with the admin's own session client, enforced by the calendar_events
+// RLS policies and is_admin() (20260924000000_add_site_roles_and_calendar_admin.sql).
 export const getCalendarEvents = cache(async (): Promise<CalendarEvent[]> => {
   const { data, error } = await createPublicClient()
     .from("calendar_events")
