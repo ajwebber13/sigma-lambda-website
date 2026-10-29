@@ -43,7 +43,11 @@ export default function CalendarView({
   useEffect(() => {
     if (isAdminProp !== undefined) return;
     const supabase = createClient();
-    supabase.rpc("is_admin").then(({ data }) => {
+    supabase.rpc("is_admin").then(({ data, error }) => {
+      if (error) {
+        console.error("is_admin() RPC failed in CalendarView:", error);
+        return;
+      }
       if (data) setIsAdmin(true);
     });
   }, [isAdminProp]);

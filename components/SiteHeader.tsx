@@ -185,7 +185,11 @@ export default function SiteHeader() {
   // Visibility only — RLS on calendar_events is what actually enforces this.
   useEffect(() => {
     const supabase = createClient();
-    supabase.rpc("is_admin").then(({ data }) => {
+    supabase.rpc("is_admin").then(({ data, error }) => {
+      if (error) {
+        console.error("is_admin() RPC failed in SiteHeader:", error);
+        return;
+      }
       if (data) setIsAdmin(true);
     });
   }, []);

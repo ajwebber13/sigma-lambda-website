@@ -25,7 +25,12 @@ export default async function PortalPage() {
 
   const fullName = user.user_metadata?.full_name ?? user.user_metadata?.name ?? null;
   const calendarEvents = await getCalendarEvents();
-  const { data: isAdmin } = await supabase.rpc("is_admin");
+  const { data: isAdmin, error: isAdminError } = await supabase.rpc("is_admin");
+  if (isAdminError) {
+    console.error(`is_admin() RPC failed for ${user.email}:`, isAdminError);
+  } else {
+    console.log(`is_admin() RPC for ${user.email} ->`, isAdmin);
+  }
 
   return (
     <PortalDashboard
