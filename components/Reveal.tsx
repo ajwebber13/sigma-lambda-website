@@ -15,25 +15,51 @@ export default function Reveal({
     const el = ref.current;
     if (!el) return;
 
-    if (typeof IntersectionObserver === "undefined") {
-      el.classList.add("in");
+    const reveal = () => el.classList.add("in");
+
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+
+    if (prefersReducedMotion || typeof IntersectionObserver === "undefined") {
+      reveal();
       return;
     }
 
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("in");
-            io.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12 }
-    );
+    // Already in (or near) the viewport on load — show it immediately
+    // rather than waiting on a scroll event that may never come.
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      reveal();
+      return;
+    }
 
-    io.observe(el);
-    return () => io.disconnect();
+    // Safety net: if the observer never fires (error elsewhere on the
+    // page, unusual layout, etc.) don't leave content hidden forever.
+    const fallback = window.setTimeout(reveal, 2000);
+
+    let io: IntersectionObserver;
+    try {
+      io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              reveal();
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0, rootMargin: "0px 0px -10% 0px" }
+      );
+      io.observe(el);
+    } catch {
+      reveal();
+    }
+
+    return () => {
+      window.clearTimeout(fallback);
+      io?.disconnect();
+    };
   }, []);
 
   return (
