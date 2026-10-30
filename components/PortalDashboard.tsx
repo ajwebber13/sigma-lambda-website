@@ -6,6 +6,7 @@ import PortalDuesCard from "@/components/PortalDuesCard";
 import PortalEventsCard from "@/components/PortalEventsCard";
 import PortalMerchCard from "@/components/PortalMerchCard";
 import { events } from "@/lib/content";
+import { SHOW_DUES, SHOW_STORE } from "@/lib/featureFlags";
 import type { CalendarEvent } from "@/lib/calendarEvents";
 
 export default function PortalDashboard({
@@ -20,6 +21,7 @@ export default function PortalDashboard({
   isAdmin?: boolean;
 }) {
   const nextEvent = events[0];
+  const summaryCardCount = 1 + (SHOW_DUES ? 1 : 0) + (SHOW_STORE ? 1 : 0);
 
   return (
     <>
@@ -43,23 +45,31 @@ export default function PortalDashboard({
               <SignOutButton />
             </div>
 
-            <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-3">
-              <div className="rounded-lg border border-line bg-white/[0.03] px-5 py-4">
-                <div className="text-[11px] font-semibold tracking-[0.04em] text-text-ondark/55">DUES</div>
-                <div className="mt-1 font-serif text-[19px]">Not yet paid</div>
-              </div>
+            <div
+              className={`mt-10 grid grid-cols-1 gap-3 ${
+                summaryCardCount === 3 ? "sm:grid-cols-3" : summaryCardCount === 2 ? "sm:grid-cols-2" : ""
+              }`}
+            >
+              {SHOW_DUES && (
+                <div className="rounded-lg border border-line bg-white/[0.03] px-5 py-4">
+                  <div className="text-[11px] font-semibold tracking-[0.04em] text-text-ondark/55">DUES</div>
+                  <div className="mt-1 font-serif text-[19px]">Not yet paid</div>
+                </div>
+              )}
               <div className="rounded-lg border border-line bg-white/[0.03] px-5 py-4">
                 <div className="text-[11px] font-semibold tracking-[0.04em] text-text-ondark/55">NEXT EVENT</div>
                 <div className="mt-1 font-serif text-[19px]">
                   {nextEvent.title} · {nextEvent.month} {nextEvent.day}
                 </div>
               </div>
-              <div className="rounded-lg border border-line bg-white/[0.03] px-5 py-4">
-                <div className="text-[11px] font-semibold tracking-[0.04em] text-text-ondark/55">
-                  CHAPTER STORE
+              {SHOW_STORE && (
+                <div className="rounded-lg border border-line bg-white/[0.03] px-5 py-4">
+                  <div className="text-[11px] font-semibold tracking-[0.04em] text-text-ondark/55">
+                    CHAPTER STORE
+                  </div>
+                  <div className="mt-1 font-serif text-[19px]">Gala tickets &amp; gear</div>
                 </div>
-                <div className="mt-1 font-serif text-[19px]">Gala tickets &amp; gear</div>
-              </div>
+              )}
             </div>
           </Reveal>
         </div>
@@ -68,19 +78,29 @@ export default function PortalDashboard({
       <section className="py-18 lg:py-27">
         <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
           <Reveal>
-            <SectionHeading tag="Your dashboard" title="Dues, events and the chapter store." className="mb-10" />
+            <SectionHeading
+              tag="Your dashboard"
+              title={
+                SHOW_DUES || SHOW_STORE
+                  ? "Dues, events and the chapter store."
+                  : "Upcoming events and the chapter calendar."
+              }
+              className="mb-10"
+            />
           </Reveal>
           <Reveal>
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-              <PortalDuesCard />
+            <div className={`grid grid-cols-1 gap-6 ${SHOW_DUES ? "lg:grid-cols-2" : ""}`}>
+              {SHOW_DUES && <PortalDuesCard />}
               <PortalEventsCard events={events} />
             </div>
           </Reveal>
-          <Reveal>
-            <div className="mt-6">
-              <PortalMerchCard />
-            </div>
-          </Reveal>
+          {SHOW_STORE && (
+            <Reveal>
+              <div className="mt-6">
+                <PortalMerchCard />
+              </div>
+            </Reveal>
+          )}
           <Reveal>
             <div className="mt-10">
               <SectionHeading tag="Calendar" title="Full chapter calendar." className="mb-6" />
@@ -88,7 +108,9 @@ export default function PortalDashboard({
             </div>
           </Reveal>
           <p className="mt-8 text-center text-[12.5px] text-text-onlight/45">
-            Preview — online payments, checkout and RSVPs go live after approval.
+            {SHOW_DUES || SHOW_STORE
+              ? "Preview — online payments, checkout and RSVPs go live after approval."
+              : "Preview: RSVPs go live after approval."}
           </p>
         </div>
       </section>

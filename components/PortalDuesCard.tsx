@@ -23,9 +23,7 @@ export default function PortalDuesCard() {
       </div>
 
       <p className="mt-3 text-[13.5px] leading-relaxed text-text-onlight/60">
-        {window === "prime"
-          ? "Prime rate applies through October 31."
-          : "The standard rate applies from November 1."}
+        {window === "prime" ? "Dues increased November 1." : "The standard rate applies from November 1."}
       </p>
 
       <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -36,7 +34,7 @@ export default function PortalDuesCard() {
               <div className="text-[12px] font-semibold text-text-onlight/60">{tierLabels[tier]}</div>
               <div className="mt-1 font-serif text-[26px] font-semibold">${base.toFixed(2)}</div>
               <div className="mt-0.5 text-[12px] text-text-onlight/50">
-                Zelle · or ${onlineTotal.toFixed(2)} by card
+                Zelle · or ${onlineTotal.toFixed(2)} by PayPal
               </div>
             </div>
           );
@@ -56,7 +54,7 @@ export default function PortalDuesCard() {
             role="status"
             className="mt-3 rounded-sm border border-line/60 bg-ivory px-4 py-3 text-[13px] leading-relaxed text-text-onlight/70"
           >
-            Online dues payment opens once the portal is approved — you&apos;ll choose Zelle or card
+            Online dues payment opens once the portal is approved — you&apos;ll choose Zelle or PayPal
             right here.
           </p>
         )}
