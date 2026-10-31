@@ -2,6 +2,7 @@ import CalendarView from "@/components/CalendarView";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import SignOutButton from "@/components/SignOutButton";
+import PortalDataSheetCard from "@/components/PortalDataSheetCard";
 import PortalDuesCard from "@/components/PortalDuesCard";
 import PortalEventsCard from "@/components/PortalEventsCard";
 import PortalGalaCard from "@/components/PortalGalaCard";
@@ -91,8 +92,9 @@ export default function PortalDashboard({
           </Reveal>
           <Reveal>
             <div
-              className={`grid grid-cols-1 gap-6 ${SHOW_DUES ? "lg:grid-cols-3" : "lg:grid-cols-2"}`}
+              className={`grid grid-cols-1 gap-6 sm:grid-cols-2 ${SHOW_DUES ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}
             >
+              <PortalDataSheetCard />
               {SHOW_DUES && <PortalDuesCard />}
               <PortalEventsCard events={events} />
               <PortalGalaCard />
