@@ -88,7 +88,7 @@ export default function ScholarshipGalaPage() {
           <p className="mt-6 text-lg text-text-ondark/78">{GALA.tagline}</p>
 
           <Reveal>
-            <div className="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-[1fr_1fr_2fr]">
+            <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-[1fr_1fr_2fr]">
               <div className="rounded-lg border border-line p-5.5">
                 <div className="text-[12px] font-semibold tracking-[0.04em] text-gold-bright uppercase">Date</div>
                 <div className="mt-1.5 text-[15.5px] font-semibold">{GALA.date}</div>
