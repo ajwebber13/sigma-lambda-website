@@ -150,12 +150,16 @@ export default function ScholarshipGalaPage() {
               tag="About the Gala"
               title="A night of scholarship, service & brotherhood."
               center
-              className="mx-auto max-w-[900px]"
-              titleClassName="text-[28px] sm:text-[36px] lg:text-[34px] leading-[1.12] font-semibold"
+              className="mx-auto max-w-[1100px]"
+              tagClassName="text-sm"
+              titleClassName="text-[30px] md:text-[38px] lg:text-[44px] leading-[1.12] font-semibold"
             />
-            <div className="mx-auto mt-4 max-w-2xl space-y-3 text-center">
+            <div className="mx-auto mt-4 max-w-3xl space-y-3 text-center">
               {GALA.about.map((paragraph) => (
-                <p key={paragraph} className="text-[16.5px] leading-relaxed text-text-onlight/68">
+                <p
+                  key={paragraph}
+                  className="text-[17px] leading-relaxed text-text-onlight/68 md:text-lg md:leading-8"
+                >
                   {paragraph}
                 </p>
               ))}

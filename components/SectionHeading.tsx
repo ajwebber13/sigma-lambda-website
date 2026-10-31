@@ -7,6 +7,7 @@ export default function SectionHeading({
   headingId,
   center = false,
   titleClassName,
+  tagClassName,
 }: {
   tag: string;
   title: string;
@@ -16,11 +17,12 @@ export default function SectionHeading({
   headingId?: string;
   center?: boolean;
   titleClassName?: string;
+  tagClassName?: string;
 }) {
   return (
     <div className={`${center ? "mx-auto text-center" : "max-w-[640px]"} ${className}`}>
       <span
-        className={`mb-3.5 block text-[13px] font-semibold tracking-[0.03em] ${
+        className={`mb-3.5 block font-semibold tracking-[0.03em] ${tagClassName ?? "text-[13px]"} ${
           dark ? "text-gold-bright" : "text-gold-text"
         }`}
       >
