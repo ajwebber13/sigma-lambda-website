@@ -88,7 +88,7 @@ export default function ScholarshipGalaPage() {
           <p className="mt-6 text-lg text-text-ondark/78">{GALA.tagline}</p>
 
           <Reveal>
-            <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-3">
+            <div className="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-[1fr_1fr_2fr]">
               <div className="rounded-lg border border-line p-5.5">
                 <div className="text-[12px] font-semibold tracking-[0.04em] text-gold-bright uppercase">Date</div>
                 <div className="mt-1.5 text-[15.5px] font-semibold">{GALA.date}</div>
@@ -99,7 +99,7 @@ export default function ScholarshipGalaPage() {
               </div>
               <div className="rounded-lg border border-line p-5.5">
                 <div className="text-[12px] font-semibold tracking-[0.04em] text-gold-bright uppercase">Venue</div>
-                <div className="mt-1.5 text-[15.5px] font-semibold">{GALA.venue}</div>
+                <div className="mt-1.5 text-[15.5px] font-semibold lg:whitespace-nowrap">{GALA.venue}</div>
                 <div className="mt-1 text-[13px] text-text-ondark/60">{GALA.city}</div>
               </div>
             </div>
@@ -146,8 +146,14 @@ export default function ScholarshipGalaPage() {
       <section className="pb-18 lg:pb-27">
         <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
           <Reveal>
-            <SectionHeading tag="About the Gala" title="A night of scholarship, service & brotherhood." />
-            <div className="mt-4 max-w-[70ch] space-y-3">
+            <SectionHeading
+              tag="About the Gala"
+              title="A night of scholarship, service & brotherhood."
+              center
+              className="mx-auto max-w-[900px]"
+              titleClassName="text-[28px] sm:text-[36px] lg:text-[34px] leading-[1.12] font-semibold"
+            />
+            <div className="mx-auto mt-4 max-w-2xl space-y-3 text-center">
               {GALA.about.map((paragraph) => (
                 <p key={paragraph} className="text-[16.5px] leading-relaxed text-text-onlight/68">
                   {paragraph}
