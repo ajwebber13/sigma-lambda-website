@@ -9,6 +9,7 @@ import PortalGalaCard from "@/components/PortalGalaCard";
 import PortalMerchCard from "@/components/PortalMerchCard";
 import { events } from "@/lib/content";
 import { SHOW_DUES, SHOW_STORE } from "@/lib/featureFlags";
+import { DATA_SHEET_URL } from "@/lib/portal-links";
 import type { CalendarEvent } from "@/lib/calendarEvents";
 
 export default function PortalDashboard({
@@ -94,7 +95,7 @@ export default function PortalDashboard({
             <div
               className={`grid grid-cols-1 gap-6 sm:grid-cols-2 ${SHOW_DUES ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}
             >
-              <PortalDataSheetCard />
+              {DATA_SHEET_URL.startsWith("https://") && <PortalDataSheetCard />}
               {SHOW_DUES && <PortalDuesCard />}
               <PortalEventsCard events={events} />
               <PortalGalaCard />
